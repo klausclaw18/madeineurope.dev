@@ -1,0 +1,139 @@
+{
+  "id": "cloud-hosting",
+  "name": "Cloud & Hosting",
+  "description": "European cloud providers, VPS platforms, managed hosting, object storage, and infrastructure services.",
+  "categoryUseCases": [
+    "host workloads in European regions",
+    "run VPS and bare-metal servers",
+    "buy managed Kubernetes",
+    "keep infrastructure under European jurisdiction"
+  ],
+  "entries": [
+    {
+      "name": "Hetzner Cloud",
+      "category": "cloud-hosting",
+      "homepage": "https://www.hetzner.com/cloud/",
+      "repository": null,
+      "description": "German cloud provider offering VPS, dedicated servers, object storage, load balancers, and managed infrastructure.",
+      "origin": {
+        "country": "Germany",
+        "region": "EU",
+        "evidence": "Hetzner is a German hosting company with European datacenter regions."
+      },
+      "github": null,
+      "tags": ["vps", "bare-metal", "object-storage", "kubernetes", "germany"],
+      "useCases": ["host EU applications", "run low-cost VPS", "deploy Kubernetes", "store data in European datacenters"],
+      "deployment": ["cloud", "managed"],
+      "pricingModel": "paid",
+      "license": null,
+      "isOpenSource": false,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Strong fit for developers who need European infrastructure rather than open-source software."
+      },
+      "sources": ["https://www.hetzner.com/cloud/"]
+    },
+    {
+      "name": "OVHcloud",
+      "category": "cloud-hosting",
+      "homepage": "https://www.ovhcloud.com/",
+      "repository": null,
+      "description": "French cloud provider offering public cloud, private cloud, bare metal, storage, networking, and managed services.",
+      "origin": {
+        "country": "France",
+        "region": "EU",
+        "evidence": "OVHcloud is a French cloud provider with European infrastructure and public cloud services."
+      },
+      "github": null,
+      "tags": ["public-cloud", "bare-metal", "storage", "networking", "france"],
+      "useCases": ["run public cloud workloads", "provision bare metal", "host regulated European applications", "buy managed infrastructure"],
+      "deployment": ["cloud", "managed"],
+      "pricingModel": "paid",
+      "license": null,
+      "isOpenSource": false,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Useful anchor provider for European cloud procurement."
+      },
+      "sources": ["https://www.ovhcloud.com/"]
+    },
+    {
+      "name": "Scaleway",
+      "category": "cloud-hosting",
+      "homepage": "https://www.scaleway.com/",
+      "repository": null,
+      "description": "French cloud provider with compute, Kubernetes, serverless, storage, database, and AI infrastructure products.",
+      "origin": {
+        "country": "France",
+        "region": "EU",
+        "evidence": "Scaleway is a European cloud provider operated from France."
+      },
+      "github": null,
+      "tags": ["cloud", "kubernetes", "serverless", "object-storage", "france"],
+      "useCases": ["deploy European cloud apps", "run managed Kubernetes", "use serverless jobs", "store data in EU regions"],
+      "deployment": ["cloud", "managed"],
+      "pricingModel": "paid",
+      "license": null,
+      "isOpenSource": false,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Developer-friendly European cloud with broad platform coverage."
+      },
+      "sources": ["https://www.scaleway.com/"]
+    },
+    {
+      "name": "IONOS Cloud",
+      "category": "cloud-hosting",
+      "homepage": "https://cloud.ionos.com/",
+      "repository": null,
+      "description": "European cloud platform for compute, storage, networking, managed Kubernetes, and enterprise hosting.",
+      "origin": {
+        "country": "Germany",
+        "region": "EU",
+        "evidence": "IONOS is a German cloud and hosting provider."
+      },
+      "github": null,
+      "tags": ["cloud", "enterprise", "managed-kubernetes", "germany"],
+      "useCases": ["host enterprise apps", "deploy managed Kubernetes", "operate EU infrastructure", "buy managed hosting"],
+      "deployment": ["cloud", "managed"],
+      "pricingModel": "paid",
+      "license": null,
+      "isOpenSource": false,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Good candidate for teams comparing European cloud providers."
+      },
+      "sources": ["https://cloud.ionos.com/"]
+    },
+    {
+      "name": "UpCloud",
+      "category": "cloud-hosting",
+      "homepage": "https://upcloud.com/",
+      "repository": null,
+      "description": "European cloud hosting provider with compute, managed databases, networking, and storage.",
+      "origin": {
+        "country": "Finland",
+        "region": "EU",
+        "evidence": "UpCloud is a Finnish cloud provider with European origins."
+      },
+      "github": null,
+      "tags": ["cloud", "vps", "managed-database", "finland"],
+      "useCases": ["run VPS workloads", "host SaaS apps", "use managed databases", "keep workloads in Europe"],
+      "deployment": ["cloud", "managed"],
+      "pricingModel": "paid",
+      "license": null,
+      "isOpenSource": false,
+      "curation": {
+        "confidence": "medium",
+        "maintenance": "active",
+        "notes": "Include as a European cloud option; verify region and compliance needs per workload."
+      },
+      "sources": ["https://upcloud.com/"]
+    }
+  ]
+}
+

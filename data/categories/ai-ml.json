@@ -1,0 +1,144 @@
+{
+  "id": "ai-ml",
+  "name": "AI & ML",
+  "description": "European AI APIs, model providers, vector search, ML infrastructure, translation, and AI application tooling.",
+  "categoryUseCases": [
+    "build AI products with European providers",
+    "run vector search",
+    "translate product content",
+    "evaluate sovereign AI options"
+  ],
+  "entries": [
+    {
+      "name": "Mistral AI",
+      "category": "ai-ml",
+      "homepage": "https://mistral.ai",
+      "repository": "https://github.com/mistralai",
+      "description": "French AI company providing open-weight and commercial language models plus hosted APIs.",
+      "origin": {
+        "country": "France",
+        "region": "EU",
+        "evidence": "Mistral AI is a French AI company."
+      },
+      "github": null,
+      "tags": ["llm", "api", "models", "open-weights", "france"],
+      "useCases": ["call European LLM APIs", "use open-weight models", "build AI assistants", "evaluate sovereign AI providers"],
+      "deployment": ["cloud", "api"],
+      "pricingModel": "mixed",
+      "license": "Mixed model licenses",
+      "isOpenSource": false,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Important European AI provider; model licenses vary by release."
+      },
+      "sources": ["https://mistral.ai", "https://github.com/mistralai"]
+    },
+    {
+      "name": "Qdrant",
+      "category": "ai-ml",
+      "homepage": "https://qdrant.tech",
+      "repository": "https://github.com/qdrant/qdrant",
+      "description": "Vector database and semantic search engine for AI applications.",
+      "origin": {
+        "country": "Germany",
+        "region": "EU",
+        "evidence": "Qdrant is operated by Qdrant Solutions GmbH in Berlin, Germany."
+      },
+      "github": {
+        "repository": "qdrant/qdrant",
+        "stars": 32482,
+        "pushedAt": "2026-06-20T12:28:06Z",
+        "license": "Apache-2.0"
+      },
+      "tags": ["vector-database", "rag", "semantic-search", "embeddings", "rust"],
+      "useCases": ["build RAG systems", "store embeddings", "serve neural search", "run recommender systems"],
+      "deployment": ["cloud", "self-hosted", "managed"],
+      "pricingModel": "open-core",
+      "license": "Apache-2.0",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Cross-listed with Databases & Storage because it is both AI infrastructure and database infrastructure."
+      },
+      "sources": ["https://api.github.com/repos/qdrant/qdrant", "https://qdrant.tech"]
+    },
+    {
+      "name": "DeepL",
+      "category": "ai-ml",
+      "homepage": "https://www.deepl.com",
+      "repository": null,
+      "description": "AI translation and writing platform with developer APIs.",
+      "origin": {
+        "country": "Germany",
+        "region": "EU",
+        "evidence": "DeepL is a German AI translation company."
+      },
+      "github": null,
+      "tags": ["translation", "api", "localization", "language-ai", "germany"],
+      "useCases": ["translate product content", "localize documentation", "build multilingual apps", "use translation APIs"],
+      "deployment": ["cloud", "api"],
+      "pricingModel": "freemium",
+      "license": null,
+      "isOpenSource": false,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Commercial API rather than open-source project."
+      },
+      "sources": ["https://www.deepl.com"]
+    },
+    {
+      "name": "Aleph Alpha",
+      "category": "ai-ml",
+      "homepage": "https://aleph-alpha.com",
+      "repository": null,
+      "description": "German AI company focused on sovereign AI, enterprise AI, and public-sector use cases.",
+      "origin": {
+        "country": "Germany",
+        "region": "EU",
+        "evidence": "Aleph Alpha is a German AI company."
+      },
+      "github": null,
+      "tags": ["sovereign-ai", "llm", "enterprise", "public-sector", "germany"],
+      "useCases": ["evaluate sovereign AI", "build enterprise AI apps", "support regulated AI workloads", "procure European AI services"],
+      "deployment": ["cloud", "api"],
+      "pricingModel": "commercial",
+      "license": null,
+      "isOpenSource": false,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Relevant for sovereignty-oriented AI procurement."
+      },
+      "sources": ["https://aleph-alpha.com"]
+    },
+    {
+      "name": "Jina AI",
+      "category": "ai-ml",
+      "homepage": "https://jina.ai",
+      "repository": "https://github.com/jina-ai",
+      "description": "AI search company providing embedding, reranking, reader, and neural search tooling.",
+      "origin": {
+        "country": "Germany",
+        "region": "EU",
+        "evidence": "Jina AI has Berlin roots and European AI/search infrastructure presence."
+      },
+      "github": null,
+      "tags": ["embeddings", "reranking", "search", "neural-search", "api"],
+      "useCases": ["build AI search", "rank retrieval results", "extract web content", "use embedding APIs"],
+      "deployment": ["cloud", "api", "library"],
+      "pricingModel": "mixed",
+      "license": "Mixed",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "medium",
+        "maintenance": "active",
+        "notes": "Included as a European-origin AI tooling company; verify current corporate structure in strict procurement."
+      },
+      "sources": ["https://jina.ai", "https://github.com/jina-ai"]
+    }
+  ]
+}
+

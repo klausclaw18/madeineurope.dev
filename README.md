@@ -18,11 +18,27 @@ A community-driven list of software, SaaS, hardware, and cloud services built by
 - 🤖 AI & ML — European AI APIs, model providers
 - 💳 Payments & Billing — SEPA, iDEAL, PSD2-compliant
 
+## Directory data
+
+The repository-facing source of truth lives in [`data/`](data/):
+
+- [`data/directory.json`](data/directory.json) is the category manifest.
+- [`data/categories/`](data/categories/) contains one declarative JSON file per category.
+- [`data/top-european-projects.json`](data/top-european-projects.json) contains the current top 5 GitHub-starred, recently maintained European projects from the 2026-06-20 research pass.
+- [`data/schema.json`](data/schema.json) documents the entry shape.
+- [`DIRECTORY_BEST_PRACTICE_PATTERNS.md`](DIRECTORY_BEST_PRACTICE_PATTERNS.md) summarizes patterns from similar GitHub directories.
+
+Example lookup:
+
+```sh
+jq '.entries[] | select(.deployment[]? == "self-hosted") | {name, category, homepage}' data/categories/*.json
+```
+
 ## Contributing
 
 Found a tool that belongs here? Open a PR!
 
-A proper contributing guide and data format is coming soon.
+Add or update entries in the relevant `data/categories/*.json` file. Include official source links, European origin evidence, tags, use cases, deployment model, license, and confidence notes.
 
 ## Why it matters
 

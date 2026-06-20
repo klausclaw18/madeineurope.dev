@@ -1,0 +1,134 @@
+{
+  "id": "analytics-monitoring",
+  "name": "Analytics & Monitoring",
+  "description": "Privacy analytics, observability, metrics, dashboards, alerting, and production monitoring tools from Europe.",
+  "categoryUseCases": [
+    "monitor production systems",
+    "build dashboards",
+    "measure product usage",
+    "replace cookie-heavy analytics"
+  ],
+  "entries": [
+    {
+      "name": "Grafana",
+      "category": "analytics-monitoring",
+      "homepage": "https://grafana.com",
+      "repository": "https://github.com/grafana/grafana",
+      "description": "Open observability and data visualization platform for metrics, logs, traces, dashboards, and alerts.",
+      "origin": {
+        "country": "Sweden",
+        "region": "EU",
+        "evidence": "data.europa.eu identifies Grafana Labs as a Sweden use case and describes Grafana's Swedish origin."
+      },
+      "github": {
+        "repository": "grafana/grafana",
+        "stars": 74545,
+        "pushedAt": "2026-06-20T12:28:05Z",
+        "license": "AGPL-3.0"
+      },
+      "tags": ["observability", "dashboard", "metrics", "logs", "traces"],
+      "useCases": ["build dashboards", "monitor production", "alert on incidents", "visualize time-series data"],
+      "deployment": ["cloud", "self-hosted"],
+      "pricingModel": "open-core",
+      "license": "AGPL-3.0",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Top-five European project in this research pass."
+      },
+      "sources": ["https://api.github.com/repos/grafana/grafana", "https://data.europa.eu/en/publications/use-cases/grafana-labs"]
+    },
+    {
+      "name": "Matomo",
+      "category": "analytics-monitoring",
+      "homepage": "https://matomo.org",
+      "repository": "https://github.com/matomo-org/matomo",
+      "description": "Open-source web analytics platform focused on data ownership and privacy.",
+      "origin": {
+        "country": "New Zealand / Germany presence",
+        "region": "Global",
+        "evidence": "Matomo has strong European adoption and privacy positioning but should be verified for strict European-only procurement."
+      },
+      "github": {
+        "repository": "matomo-org/matomo",
+        "stars": 21612,
+        "pushedAt": "2026-06-20T12:14:15Z",
+        "license": "GPL-3.0"
+      },
+      "tags": ["analytics", "privacy", "self-hosted", "gdpr", "web-analytics"],
+      "useCases": ["replace Google Analytics", "self-host analytics", "own visitor data", "measure web funnels"],
+      "deployment": ["cloud", "self-hosted"],
+      "pricingModel": "open-core",
+      "license": "GPL-3.0",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "low",
+        "maintenance": "active",
+        "notes": "Strong privacy/open-source fit, but European origin confidence is lower than Europe-registered entries."
+      },
+      "sources": ["https://api.github.com/repos/matomo-org/matomo", "https://matomo.org/"]
+    },
+    {
+      "name": "Plausible Analytics",
+      "category": "analytics-monitoring",
+      "homepage": "https://plausible.io",
+      "repository": "https://github.com/plausible/analytics",
+      "description": "Lightweight, privacy-first, cookie-free web analytics with cloud and self-hosting options.",
+      "origin": {
+        "country": "Estonia",
+        "region": "EU",
+        "evidence": "Plausible is commonly presented as an Estonia-based privacy analytics company."
+      },
+      "github": {
+        "repository": "plausible/analytics",
+        "stars": 27261,
+        "pushedAt": "2026-06-19T11:15:49Z",
+        "license": "AGPL-3.0"
+      },
+      "tags": ["analytics", "privacy", "cookie-free", "self-hosted", "web-analytics"],
+      "useCases": ["measure traffic without cookies", "self-host simple analytics", "reduce analytics script weight", "support GDPR-friendly metrics"],
+      "deployment": ["cloud", "self-hosted"],
+      "pricingModel": "open-core",
+      "license": "AGPL-3.0",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "medium",
+        "maintenance": "active",
+        "notes": "Good developer-friendly analytics choice; verify legal entity details when used for strict procurement."
+      },
+      "sources": ["https://api.github.com/repos/plausible/analytics", "https://plausible.io"]
+    },
+    {
+      "name": "Netdata",
+      "category": "analytics-monitoring",
+      "homepage": "https://www.netdata.cloud",
+      "repository": "https://github.com/netdata/netdata",
+      "description": "Real-time infrastructure monitoring and troubleshooting with per-second metrics.",
+      "origin": {
+        "country": "Greece / United States",
+        "region": "Mixed",
+        "evidence": "Netdata was founded by Greek engineer Costa Tsaousis, but current legal materials identify Netdata, Inc. in Delaware with a San Francisco principal place of business."
+      },
+      "github": {
+        "repository": "netdata/netdata",
+        "stars": 79326,
+        "pushedAt": "2026-06-20T12:44:42Z",
+        "license": "GPL-3.0"
+      },
+      "tags": ["monitoring", "metrics", "infrastructure", "troubleshooting", "agent"],
+      "useCases": ["monitor servers", "debug production incidents", "collect per-second metrics", "watch infrastructure health"],
+      "deployment": ["cloud", "self-hosted"],
+      "pricingModel": "open-core",
+      "license": "GPL-3.0 plus dashboard terms",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "low",
+        "maintenance": "active",
+        "notes": "Highly starred and maintained, but not treated as Europe-primary in top-five ranking because current legal status is US-based."
+      },
+      "sources": ["https://api.github.com/repos/netdata/netdata", "https://www.netdata.cloud/privacy/"]
+    }
+  ]
+}
+

@@ -1,0 +1,146 @@
+{
+  "researchDate": "2026-06-20",
+  "selectionMethod": "Canonical GitHub repositories ranked by stargazers_count, filtered for European legal registration, foundation governance, or strong documented European origin, then checked for recent pushed_at activity.",
+  "entries": [
+    {
+      "rank": 1,
+      "name": "n8n",
+      "category": "developer-tools",
+      "homepage": "https://n8n.io",
+      "repository": "https://github.com/n8n-io/n8n",
+      "description": "Workflow automation platform for connecting APIs, SaaS tools, internal systems, and AI workflows with self-hosting support.",
+      "origin": {
+        "country": "Germany",
+        "region": "EU",
+        "evidence": "n8n's official imprint lists n8n GmbH in Berlin, Germany."
+      },
+      "github": {
+        "repository": "n8n-io/n8n",
+        "stars": 193297,
+        "pushedAt": "2026-06-20T12:51:49Z",
+        "license": "NOASSERTION"
+      },
+      "whyItMatters": "A high-adoption European automation platform for developers who need API orchestration, internal workflow tooling, and self-hostable automation.",
+      "maintenanceSignal": "Very active repository with same-day push activity during research.",
+      "sources": [
+        "https://api.github.com/repos/n8n-io/n8n",
+        "https://n8n.io/imprint/"
+      ]
+    },
+    {
+      "rank": 2,
+      "name": "Godot Engine",
+      "category": "developer-tools",
+      "homepage": "https://godotengine.org",
+      "repository": "https://github.com/godotengine/godot",
+      "description": "Free and open-source 2D and 3D game engine with broad platform support.",
+      "origin": {
+        "country": "Netherlands",
+        "region": "EU",
+        "evidence": "Godot governance states that the Godot Foundation is a Dutch non-profit registered in the Netherlands."
+      },
+      "github": {
+        "repository": "godotengine/godot",
+        "stars": 112815,
+        "pushedAt": "2026-06-19T20:16:52Z",
+        "license": "MIT"
+      },
+      "whyItMatters": "One of the most visible European-governed open-source developer tools, useful for game development, simulations, education, and interactive tooling.",
+      "maintenanceSignal": "Recent push activity and public governance with community-driven technical decision making.",
+      "sources": [
+        "https://api.github.com/repos/godotengine/godot",
+        "https://godotengine.org/governance/"
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Home Assistant",
+      "category": "hardware-iot",
+      "homepage": "https://www.home-assistant.io",
+      "repository": "https://github.com/home-assistant/core",
+      "description": "Open-source home automation platform focused on local control and privacy.",
+      "origin": {
+        "country": "Switzerland",
+        "region": "Europe",
+        "evidence": "The Open Home Foundation owns and protects Home Assistant and lists Swiss registration identifier CHE-416.988.952."
+      },
+      "github": {
+        "repository": "home-assistant/core",
+        "stars": 87854,
+        "pushedAt": "2026-06-20T12:59:36Z",
+        "license": "Apache-2.0"
+      },
+      "whyItMatters": "A major European-governed IoT platform for developers building local-first automations, integrations, and privacy-preserving smart-home systems.",
+      "maintenanceSignal": "Same-day push activity and a large, active ecosystem of integrations and related projects.",
+      "sources": [
+        "https://api.github.com/repos/home-assistant/core",
+        "https://www.openhomefoundation.org/blog/announcing-the-open-home-foundation/"
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "Elasticsearch",
+      "category": "databases-storage",
+      "homepage": "https://www.elastic.co/products/elasticsearch",
+      "repository": "https://github.com/elastic/elasticsearch",
+      "description": "Distributed search and analytics engine used for search, observability, and security workloads.",
+      "origin": {
+        "country": "Netherlands",
+        "region": "EU",
+        "evidence": "Elastic N.V. is registered with a legal address in Amsterdam, Netherlands."
+      },
+      "github": {
+        "repository": "elastic/elasticsearch",
+        "stars": 77074,
+        "pushedAt": "2026-06-20T12:52:34Z",
+        "license": "NOASSERTION"
+      },
+      "whyItMatters": "A major European-rooted search infrastructure project for developers building search, log analytics, vector retrieval, and operational data systems.",
+      "maintenanceSignal": "Same-day push activity and long-running enterprise maintenance.",
+      "sources": [
+        "https://api.github.com/repos/elastic/elasticsearch",
+        "https://www.lei-lookup.com/record/2549003I48WHHH937I59/"
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Grafana",
+      "category": "analytics-monitoring",
+      "homepage": "https://grafana.com",
+      "repository": "https://github.com/grafana/grafana",
+      "description": "Open observability and data visualization platform for metrics, logs, traces, dashboards, and alerts.",
+      "origin": {
+        "country": "Sweden",
+        "region": "EU",
+        "evidence": "data.europa.eu identifies Grafana Labs as a Sweden use case and notes that the Grafana project was started by Torkel Odegaard."
+      },
+      "github": {
+        "repository": "grafana/grafana",
+        "stars": 74545,
+        "pushedAt": "2026-06-20T12:28:05Z",
+        "license": "AGPL-3.0"
+      },
+      "whyItMatters": "A default choice for European observability stacks, especially when teams need dashboards across Prometheus, Loki, Elasticsearch, Postgres, and other sources.",
+      "maintenanceSignal": "Same-day push activity and a large public contributor ecosystem.",
+      "sources": [
+        "https://api.github.com/repos/grafana/grafana",
+        "https://data.europa.eu/en/publications/use-cases/grafana-labs"
+      ]
+    }
+  ],
+  "nearMisses": [
+    {
+      "name": "Netdata",
+      "repository": "https://github.com/netdata/netdata",
+      "stars": 79326,
+      "reasonNotTopFive": "Very highly starred and founded by a Greek engineer, but current official privacy/legal materials identify Netdata, Inc. as a Delaware company with a San Francisco principal place of business, so it was not treated as Europe-primary in this pass."
+    },
+    {
+      "name": "Strapi",
+      "repository": "https://github.com/strapi/strapi",
+      "stars": 72416,
+      "reasonNotTopFive": "Strong French origin and Paris presence, but current terms identify Strapi, Inc. as a US company. Kept as a medium-confidence candidate rather than a top Europe-primary entry."
+    }
+  ]
+}
+

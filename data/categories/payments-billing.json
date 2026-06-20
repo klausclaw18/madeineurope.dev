@@ -1,0 +1,139 @@
+{
+  "id": "payments-billing",
+  "name": "Payments & Billing",
+  "description": "European payment processors, billing platforms, invoicing tools, SEPA, iDEAL, and PSD2-ready services.",
+  "categoryUseCases": [
+    "accept European payment methods",
+    "bill subscriptions",
+    "support SEPA and iDEAL",
+    "choose European payment infrastructure"
+  ],
+  "entries": [
+    {
+      "name": "Adyen",
+      "category": "payments-billing",
+      "homepage": "https://www.adyen.com",
+      "repository": "https://github.com/Adyen",
+      "description": "Dutch payments platform for online, in-person, marketplace, and global payment processing.",
+      "origin": {
+        "country": "Netherlands",
+        "region": "EU",
+        "evidence": "Adyen is a Dutch payments company headquartered in Amsterdam."
+      },
+      "github": null,
+      "tags": ["payments", "psp", "marketplaces", "ideal", "sepa"],
+      "useCases": ["accept European payments", "process iDEAL", "support marketplaces", "unify online and in-person payments"],
+      "deployment": ["cloud", "api"],
+      "pricingModel": "commercial",
+      "license": null,
+      "isOpenSource": false,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Enterprise-grade European payment processor."
+      },
+      "sources": ["https://www.adyen.com", "https://github.com/Adyen"]
+    },
+    {
+      "name": "Mollie",
+      "category": "payments-billing",
+      "homepage": "https://www.mollie.com",
+      "repository": "https://github.com/mollie",
+      "description": "Dutch payment service provider with APIs and support for European payment methods.",
+      "origin": {
+        "country": "Netherlands",
+        "region": "EU",
+        "evidence": "Mollie is a Dutch payment service provider."
+      },
+      "github": null,
+      "tags": ["payments", "ideal", "sepa", "subscriptions", "api"],
+      "useCases": ["accept iDEAL", "process subscriptions", "add payment links", "support European payment methods"],
+      "deployment": ["cloud", "api"],
+      "pricingModel": "commercial",
+      "license": null,
+      "isOpenSource": false,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Developer-friendly European PSP for startups and SMBs."
+      },
+      "sources": ["https://www.mollie.com", "https://github.com/mollie"]
+    },
+    {
+      "name": "GoCardless",
+      "category": "payments-billing",
+      "homepage": "https://gocardless.com",
+      "repository": "https://github.com/gocardless",
+      "description": "Bank payment network for direct debit, recurring payments, and account-to-account payments.",
+      "origin": {
+        "country": "United Kingdom",
+        "region": "Europe",
+        "evidence": "GoCardless is a UK payments company."
+      },
+      "github": null,
+      "tags": ["direct-debit", "recurring-payments", "bank-payments", "sepa", "api"],
+      "useCases": ["collect subscriptions", "use SEPA Direct Debit", "process recurring invoices", "reduce card fees"],
+      "deployment": ["cloud", "api"],
+      "pricingModel": "commercial",
+      "license": null,
+      "isOpenSource": false,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Strong fit for recurring bank payments and SEPA collection."
+      },
+      "sources": ["https://gocardless.com", "https://github.com/gocardless"]
+    },
+    {
+      "name": "Lago",
+      "category": "payments-billing",
+      "homepage": "https://www.getlago.com",
+      "repository": "https://github.com/getlago/lago",
+      "description": "Open-source metering and billing platform for usage-based pricing.",
+      "origin": {
+        "country": "France",
+        "region": "EU",
+        "evidence": "Lago is a French open-source billing company."
+      },
+      "github": null,
+      "tags": ["billing", "usage-based", "metering", "open-source", "subscriptions"],
+      "useCases": ["meter usage", "bill subscriptions", "build usage-based pricing", "self-host billing logic"],
+      "deployment": ["cloud", "self-hosted"],
+      "pricingModel": "open-core",
+      "license": "AGPL-3.0",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Good European open-source billing option for SaaS teams."
+      },
+      "sources": ["https://www.getlago.com", "https://github.com/getlago/lago"]
+    },
+    {
+      "name": "SumUp",
+      "category": "payments-billing",
+      "homepage": "https://www.sumup.com",
+      "repository": "https://github.com/sumup",
+      "description": "European payments company offering card readers, online payments, invoicing, and merchant tools.",
+      "origin": {
+        "country": "United Kingdom / Germany",
+        "region": "Europe",
+        "evidence": "SumUp has European roots and major operations in London and Berlin."
+      },
+      "github": null,
+      "tags": ["payments", "pos", "card-reader", "invoicing", "merchant-tools"],
+      "useCases": ["accept in-person payments", "sell online", "invoice customers", "support small business payments"],
+      "deployment": ["cloud", "api", "hardware"],
+      "pricingModel": "commercial",
+      "license": null,
+      "isOpenSource": false,
+      "curation": {
+        "confidence": "medium",
+        "maintenance": "active",
+        "notes": "Useful for hardware-assisted payments and merchant tooling; verify API fit per project."
+      },
+      "sources": ["https://www.sumup.com", "https://github.com/sumup"]
+    }
+  ]
+}
+

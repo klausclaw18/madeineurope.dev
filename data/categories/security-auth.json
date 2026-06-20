@@ -1,0 +1,139 @@
+{
+  "id": "security-auth",
+  "name": "Security & Auth",
+  "description": "European identity, authentication, secrets, password, VPN, and hardware security tools.",
+  "categoryUseCases": [
+    "add passkeys and SSO",
+    "manage secrets and passwords",
+    "protect developer devices",
+    "choose European VPN or security hardware"
+  ],
+  "entries": [
+    {
+      "name": "ZITADEL",
+      "category": "security-auth",
+      "homepage": "https://zitadel.com",
+      "repository": "https://github.com/zitadel/zitadel",
+      "description": "Open-source identity infrastructure for login, SSO, multi-tenancy, and machine-to-machine auth.",
+      "origin": {
+        "country": "Switzerland",
+        "region": "Europe",
+        "evidence": "ZITADEL is operated by a Swiss company and publishes a canonical open-source repository."
+      },
+      "github": null,
+      "tags": ["identity", "sso", "oidc", "oauth", "multi-tenant"],
+      "useCases": ["add SSO", "build multi-tenant auth", "manage OIDC/OAuth", "self-host identity"],
+      "deployment": ["cloud", "self-hosted"],
+      "pricingModel": "open-core",
+      "license": "Apache-2.0",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "medium",
+        "maintenance": "active",
+        "notes": "Good fit for European identity; refresh GitHub metadata in a future automated pass."
+      },
+      "sources": ["https://zitadel.com", "https://github.com/zitadel/zitadel"]
+    },
+    {
+      "name": "Hanko",
+      "category": "security-auth",
+      "homepage": "https://www.hanko.io",
+      "repository": "https://github.com/teamhanko/hanko",
+      "description": "Passkey-first authentication and user management for modern web applications.",
+      "origin": {
+        "country": "Germany",
+        "region": "EU",
+        "evidence": "Hanko is a German passkey/authentication vendor."
+      },
+      "github": null,
+      "tags": ["passkeys", "webauthn", "authentication", "login", "gdpr"],
+      "useCases": ["add passkeys", "replace passwords", "build login flows", "support WebAuthn"],
+      "deployment": ["cloud", "self-hosted"],
+      "pricingModel": "open-core",
+      "license": "AGPL-3.0",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "medium",
+        "maintenance": "active",
+        "notes": "Included for passkey-first auth; verify current license per component."
+      },
+      "sources": ["https://www.hanko.io", "https://github.com/teamhanko/hanko"]
+    },
+    {
+      "name": "Passbolt",
+      "category": "security-auth",
+      "homepage": "https://www.passbolt.com",
+      "repository": "https://github.com/passbolt/passbolt_api",
+      "description": "Open-source password manager built for teams, with self-hosting and collaboration workflows.",
+      "origin": {
+        "country": "Luxembourg",
+        "region": "EU",
+        "evidence": "Passbolt is a European company headquartered in Luxembourg."
+      },
+      "github": null,
+      "tags": ["password-manager", "teams", "secrets", "self-hosted"],
+      "useCases": ["share team passwords", "self-host password management", "manage developer credentials", "audit access"],
+      "deployment": ["cloud", "self-hosted"],
+      "pricingModel": "open-core",
+      "license": "AGPL-3.0",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "medium",
+        "maintenance": "active",
+        "notes": "Useful for European team credential management."
+      },
+      "sources": ["https://www.passbolt.com", "https://github.com/passbolt/passbolt_api"]
+    },
+    {
+      "name": "Proton VPN",
+      "category": "security-auth",
+      "homepage": "https://protonvpn.com",
+      "repository": "https://github.com/ProtonVPN",
+      "description": "Privacy-focused VPN service from Proton with open-source clients.",
+      "origin": {
+        "country": "Switzerland",
+        "region": "Europe",
+        "evidence": "Proton is a Swiss privacy company."
+      },
+      "github": null,
+      "tags": ["vpn", "privacy", "network-security", "switzerland"],
+      "useCases": ["secure developer traffic", "test regional access", "protect remote work", "use privacy-focused VPN"],
+      "deployment": ["desktop", "cloud"],
+      "pricingModel": "freemium",
+      "license": "Mixed open-source clients",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "medium",
+        "maintenance": "active",
+        "notes": "Service is commercial; open-source status applies mainly to client software."
+      },
+      "sources": ["https://protonvpn.com", "https://github.com/ProtonVPN"]
+    },
+    {
+      "name": "Nitrokey",
+      "category": "security-auth",
+      "homepage": "https://www.nitrokey.com",
+      "repository": "https://github.com/Nitrokey",
+      "description": "Open hardware security keys, encrypted storage, and secure devices for authentication and secrets.",
+      "origin": {
+        "country": "Germany",
+        "region": "EU",
+        "evidence": "Nitrokey is a German open hardware security company."
+      },
+      "github": null,
+      "tags": ["hardware-security", "fido2", "open-hardware", "keys", "germany"],
+      "useCases": ["use hardware-backed MFA", "protect signing keys", "secure developer laptops", "store secrets on hardware"],
+      "deployment": ["hardware"],
+      "pricingModel": "hardware",
+      "license": "Mixed open-source hardware/software",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Also appears in Hardware & IoT because it is both a security and hardware vendor."
+      },
+      "sources": ["https://www.nitrokey.com", "https://github.com/Nitrokey"]
+    }
+  ]
+}
+

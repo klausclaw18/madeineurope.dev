@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://madeineurope.dev/data/schema.json",
+  "title": "Made in Europe Directory Category",
+  "type": "object",
+  "required": ["id", "name", "description", "categoryUseCases", "entries"],
+  "properties": {
+    "id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "categoryUseCases": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "category",
+          "homepage",
+          "description",
+          "origin",
+          "tags",
+          "useCases",
+          "deployment",
+          "pricingModel",
+          "license",
+          "isOpenSource",
+          "curation",
+          "sources"
+        ],
+        "properties": {
+          "name": { "type": "string" },
+          "category": { "type": "string" },
+          "homepage": { "type": "string", "format": "uri" },
+          "repository": { "type": ["string", "null"], "format": "uri" },
+          "description": { "type": "string" },
+          "origin": {
+            "type": "object",
+            "required": ["country", "region", "evidence"],
+            "properties": {
+              "country": { "type": "string" },
+              "region": { "type": "string" },
+              "evidence": { "type": "string" }
+            }
+          },
+          "github": {
+            "type": ["object", "null"],
+            "properties": {
+              "repository": { "type": "string" },
+              "stars": { "type": "integer" },
+              "pushedAt": { "type": "string" },
+              "license": { "type": ["string", "null"] }
+            }
+          },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "useCases": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "deployment": {
+            "type": "array",
+            "items": {
+              "enum": ["cloud", "self-hosted", "managed", "desktop", "hardware", "library", "api", "on-prem"]
+            }
+          },
+          "pricingModel": {
+            "enum": ["free", "open-core", "commercial", "freemium", "paid", "hardware", "mixed", "unknown"]
+          },
+          "license": { "type": ["string", "null"] },
+          "isOpenSource": { "type": "boolean" },
+          "curation": {
+            "type": "object",
+            "required": ["confidence", "maintenance", "notes"],
+            "properties": {
+              "confidence": { "enum": ["high", "medium", "low"] },
+              "maintenance": { "enum": ["active", "watch", "unknown"] },
+              "notes": { "type": "string" }
+            }
+          },
+          "sources": {
+            "type": "array",
+            "items": { "type": "string", "format": "uri" }
+          }
+        }
+      }
+    }
+  }
+}
+

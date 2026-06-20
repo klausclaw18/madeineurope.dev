@@ -1,0 +1,55 @@
+{
+  "name": "madeineurope.dev",
+  "description": "A curated directory of developer tools, software, services, and hardware made in Europe.",
+  "researchDate": "2026-06-20",
+  "schema": "./schema.json",
+  "topProjects": "./top-european-projects.json",
+  "categories": [
+    {
+      "id": "developer-tools",
+      "name": "Developer Tools",
+      "file": "./categories/developer-tools.json"
+    },
+    {
+      "id": "cloud-hosting",
+      "name": "Cloud & Hosting",
+      "file": "./categories/cloud-hosting.json"
+    },
+    {
+      "id": "security-auth",
+      "name": "Security & Auth",
+      "file": "./categories/security-auth.json"
+    },
+    {
+      "id": "analytics-monitoring",
+      "name": "Analytics & Monitoring",
+      "file": "./categories/analytics-monitoring.json"
+    },
+    {
+      "id": "hardware-iot",
+      "name": "Hardware & IoT",
+      "file": "./categories/hardware-iot.json"
+    },
+    {
+      "id": "databases-storage",
+      "name": "Databases & Storage",
+      "file": "./categories/databases-storage.json"
+    },
+    {
+      "id": "communication-email",
+      "name": "Communication & Email",
+      "file": "./categories/communication-email.json"
+    },
+    {
+      "id": "ai-ml",
+      "name": "AI & ML",
+      "file": "./categories/ai-ml.json"
+    },
+    {
+      "id": "payments-billing",
+      "name": "Payments & Billing",
+      "file": "./categories/payments-billing.json"
+    }
+  ]
+}
+

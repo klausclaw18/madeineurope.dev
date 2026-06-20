@@ -1,0 +1,149 @@
+{
+  "id": "hardware-iot",
+  "name": "Hardware & IoT",
+  "description": "European hardware, IoT software, open hardware, smart-home platforms, boards, keys, and maker tooling.",
+  "categoryUseCases": [
+    "prototype connected devices",
+    "build local-first automations",
+    "secure developer hardware",
+    "work with open hardware ecosystems"
+  ],
+  "entries": [
+    {
+      "name": "Home Assistant",
+      "category": "hardware-iot",
+      "homepage": "https://www.home-assistant.io",
+      "repository": "https://github.com/home-assistant/core",
+      "description": "Open-source home automation platform focused on local control and privacy.",
+      "origin": {
+        "country": "Switzerland",
+        "region": "Europe",
+        "evidence": "Open Home Foundation owns and protects Home Assistant and lists Swiss registration identifier CHE-416.988.952."
+      },
+      "github": {
+        "repository": "home-assistant/core",
+        "stars": 87854,
+        "pushedAt": "2026-06-20T12:59:36Z",
+        "license": "Apache-2.0"
+      },
+      "tags": ["iot", "home-automation", "local-first", "privacy", "smart-home"],
+      "useCases": ["build smart-home automations", "integrate IoT devices", "keep control local", "prototype device integrations"],
+      "deployment": ["self-hosted", "hardware"],
+      "pricingModel": "free",
+      "license": "Apache-2.0",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Top-five European project in this research pass."
+      },
+      "sources": ["https://api.github.com/repos/home-assistant/core", "https://www.openhomefoundation.org/blog/announcing-the-open-home-foundation/"]
+    },
+    {
+      "name": "Arduino",
+      "category": "hardware-iot",
+      "homepage": "https://www.arduino.cc",
+      "repository": "https://github.com/arduino/Arduino",
+      "description": "Open hardware and software ecosystem for microcontroller prototyping and education.",
+      "origin": {
+        "country": "Italy",
+        "region": "EU",
+        "evidence": "Arduino is an Italian-origin hardware and software ecosystem."
+      },
+      "github": {
+        "repository": "arduino/Arduino",
+        "stars": 14601,
+        "pushedAt": "2025-10-11T09:27:40Z",
+        "license": "NOASSERTION"
+      },
+      "tags": ["microcontroller", "maker", "open-hardware", "ide", "iot"],
+      "useCases": ["prototype hardware", "teach embedded development", "build sensors", "program microcontrollers"],
+      "deployment": ["desktop", "hardware"],
+      "pricingModel": "hardware",
+      "license": "Mixed open hardware/software",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "watch",
+        "notes": "Arduino IDE 1.x repository is less active than the broader Arduino ecosystem; include newer Arduino repos in future passes."
+      },
+      "sources": ["https://api.github.com/repos/arduino/Arduino", "https://www.arduino.cc"]
+    },
+    {
+      "name": "PrusaSlicer",
+      "category": "hardware-iot",
+      "homepage": "https://www.prusa3d.com/page/prusaslicer_424/",
+      "repository": "https://github.com/prusa3d/PrusaSlicer",
+      "description": "Open-source slicer for 3D printing workflows, maintained by Prusa Research.",
+      "origin": {
+        "country": "Czech Republic",
+        "region": "EU",
+        "evidence": "Prusa Research is a Czech 3D-printing hardware company."
+      },
+      "github": null,
+      "tags": ["3d-printing", "slicer", "hardware", "maker", "open-source"],
+      "useCases": ["prepare 3D prints", "prototype enclosures", "support hardware development", "operate printer farms"],
+      "deployment": ["desktop", "hardware"],
+      "pricingModel": "free",
+      "license": "AGPL-3.0",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Strong European hardware-adjacent developer tool."
+      },
+      "sources": ["https://github.com/prusa3d/PrusaSlicer", "https://www.prusa3d.com/page/prusaslicer_424/"]
+    },
+    {
+      "name": "KiCad",
+      "category": "hardware-iot",
+      "homepage": "https://www.kicad.org",
+      "repository": "https://gitlab.com/kicad/code/kicad",
+      "description": "Open-source electronics design automation suite for schematic capture and PCB layout.",
+      "origin": {
+        "country": "France / CERN ecosystem",
+        "region": "Europe",
+        "evidence": "KiCad has European origins and significant European institutional support, including CERN contributions."
+      },
+      "github": null,
+      "tags": ["pcb", "eda", "electronics", "open-source", "hardware"],
+      "useCases": ["design PCBs", "prototype electronics", "create schematics", "manufacture hardware"],
+      "deployment": ["desktop"],
+      "pricingModel": "free",
+      "license": "GPL-3.0",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "medium",
+        "maintenance": "active",
+        "notes": "Canonical source is GitLab rather than GitHub; include for hardware developers despite not fitting GitHub-star ranking."
+      },
+      "sources": ["https://www.kicad.org", "https://gitlab.com/kicad/code/kicad"]
+    },
+    {
+      "name": "Nitrokey",
+      "category": "hardware-iot",
+      "homepage": "https://www.nitrokey.com",
+      "repository": "https://github.com/Nitrokey",
+      "description": "Open hardware security keys, encrypted storage, and secure computing devices.",
+      "origin": {
+        "country": "Germany",
+        "region": "EU",
+        "evidence": "Nitrokey is a German open hardware security company."
+      },
+      "github": null,
+      "tags": ["security-key", "open-hardware", "fido2", "encrypted-storage", "linux"],
+      "useCases": ["secure developer access", "store keys on hardware", "use hardware-backed MFA", "buy open security devices"],
+      "deployment": ["hardware"],
+      "pricingModel": "hardware",
+      "license": "Mixed open-source hardware/software",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Cross-listed with Security & Auth because its primary value is hardware-backed security."
+      },
+      "sources": ["https://www.nitrokey.com", "https://github.com/Nitrokey"]
+    }
+  ]
+}
+

@@ -1,0 +1,154 @@
+{
+  "id": "databases-storage",
+  "name": "Databases & Storage",
+  "description": "European search, vector databases, collaboration storage, object storage, and data infrastructure.",
+  "categoryUseCases": [
+    "build search and retrieval systems",
+    "store files under European control",
+    "run vector search for AI apps",
+    "operate databases and data backends"
+  ],
+  "entries": [
+    {
+      "name": "Elasticsearch",
+      "category": "databases-storage",
+      "homepage": "https://www.elastic.co/products/elasticsearch",
+      "repository": "https://github.com/elastic/elasticsearch",
+      "description": "Distributed search and analytics engine used for search, observability, security, and retrieval workloads.",
+      "origin": {
+        "country": "Netherlands",
+        "region": "EU",
+        "evidence": "Elastic N.V. is registered with a legal address in Amsterdam, Netherlands."
+      },
+      "github": {
+        "repository": "elastic/elasticsearch",
+        "stars": 77074,
+        "pushedAt": "2026-06-20T12:52:34Z",
+        "license": "NOASSERTION"
+      },
+      "tags": ["search", "analytics", "logs", "vector-search", "data-platform"],
+      "useCases": ["build search experiences", "index logs", "run retrieval systems", "analyze operational data"],
+      "deployment": ["cloud", "self-hosted", "managed"],
+      "pricingModel": "open-core",
+      "license": "Elastic License / AGPL portions",
+      "isOpenSource": false,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Top-five European project in this research pass; license should be reviewed per deployment."
+      },
+      "sources": ["https://api.github.com/repos/elastic/elasticsearch", "https://www.lei-lookup.com/record/2549003I48WHHH937I59/"]
+    },
+    {
+      "name": "Qdrant",
+      "category": "databases-storage",
+      "homepage": "https://qdrant.tech",
+      "repository": "https://github.com/qdrant/qdrant",
+      "description": "High-performance vector database and vector search engine for AI applications.",
+      "origin": {
+        "country": "Germany",
+        "region": "EU",
+        "evidence": "Qdrant is operated by Qdrant Solutions GmbH in Berlin, Germany."
+      },
+      "github": {
+        "repository": "qdrant/qdrant",
+        "stars": 32482,
+        "pushedAt": "2026-06-20T12:28:06Z",
+        "license": "Apache-2.0"
+      },
+      "tags": ["vector-database", "ai", "semantic-search", "rust", "retrieval"],
+      "useCases": ["build RAG systems", "run semantic search", "store embeddings", "serve recommendations"],
+      "deployment": ["cloud", "self-hosted", "managed"],
+      "pricingModel": "open-core",
+      "license": "Apache-2.0",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Strong European AI/data infrastructure candidate with same-day repository activity."
+      },
+      "sources": ["https://api.github.com/repos/qdrant/qdrant", "https://qdrant.tech"]
+    },
+    {
+      "name": "Nextcloud",
+      "category": "databases-storage",
+      "homepage": "https://nextcloud.com",
+      "repository": "https://github.com/nextcloud/server",
+      "description": "Self-hosted collaboration and file sync platform for documents, storage, sharing, and apps.",
+      "origin": {
+        "country": "Germany",
+        "region": "EU",
+        "evidence": "Nextcloud GmbH is a German company behind the Nextcloud server project."
+      },
+      "github": {
+        "repository": "nextcloud/server",
+        "stars": 35866,
+        "pushedAt": "2026-06-20T09:02:34Z",
+        "license": "AGPL-3.0"
+      },
+      "tags": ["file-storage", "collaboration", "self-hosted", "sync", "documents"],
+      "useCases": ["self-host files", "replace proprietary cloud storage", "share documents", "support team collaboration"],
+      "deployment": ["cloud", "self-hosted", "on-prem"],
+      "pricingModel": "open-core",
+      "license": "AGPL-3.0",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Good European storage/collaboration default for self-hosting needs."
+      },
+      "sources": ["https://api.github.com/repos/nextcloud/server", "https://nextcloud.com"]
+    },
+    {
+      "name": "CrateDB",
+      "category": "databases-storage",
+      "homepage": "https://cratedb.com",
+      "repository": "https://github.com/crate/crate",
+      "description": "Distributed SQL database for real-time analytics, time-series, and machine data.",
+      "origin": {
+        "country": "Austria / Germany",
+        "region": "EU",
+        "evidence": "CrateDB has European company roots and operations."
+      },
+      "github": null,
+      "tags": ["sql", "time-series", "analytics", "distributed-database", "iot"],
+      "useCases": ["store machine data", "query time-series", "run real-time analytics", "serve industrial IoT data"],
+      "deployment": ["cloud", "self-hosted", "managed"],
+      "pricingModel": "open-core",
+      "license": "Apache-2.0",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "medium",
+        "maintenance": "active",
+        "notes": "Include as a European database candidate; refresh GitHub metadata in a future pass."
+      },
+      "sources": ["https://cratedb.com", "https://github.com/crate/crate"]
+    },
+    {
+      "name": "SurrealDB",
+      "category": "databases-storage",
+      "homepage": "https://surrealdb.com",
+      "repository": "https://github.com/surrealdb/surrealdb",
+      "description": "Multi-model database for modern applications with SQL-like querying and real-time APIs.",
+      "origin": {
+        "country": "United Kingdom",
+        "region": "Europe",
+        "evidence": "SurrealDB is a UK-origin database company and open-source project."
+      },
+      "github": null,
+      "tags": ["database", "multi-model", "realtime", "rust", "application-backend"],
+      "useCases": ["build app backends", "prototype realtime data models", "combine document and graph data", "self-host database services"],
+      "deployment": ["cloud", "self-hosted", "managed"],
+      "pricingModel": "open-core",
+      "license": "Business Source License",
+      "isOpenSource": false,
+      "curation": {
+        "confidence": "medium",
+        "maintenance": "active",
+        "notes": "Promising European-origin database; license is source-available rather than OSI open source."
+      },
+      "sources": ["https://surrealdb.com", "https://github.com/surrealdb/surrealdb"]
+    }
+  ]
+}
+

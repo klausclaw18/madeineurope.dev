@@ -1,0 +1,134 @@
+{
+  "id": "developer-tools",
+  "name": "Developer Tools",
+  "description": "IDEs, CLIs, automation platforms, design-to-code tools, game engines, and productivity tools built or governed in Europe.",
+  "categoryUseCases": [
+    "automate developer workflows",
+    "build games and simulations",
+    "design product interfaces",
+    "write, refactor, and ship code"
+  ],
+  "entries": [
+    {
+      "name": "n8n",
+      "category": "developer-tools",
+      "homepage": "https://n8n.io",
+      "repository": "https://github.com/n8n-io/n8n",
+      "description": "Workflow automation platform for APIs, SaaS, internal tools, and AI workflows.",
+      "origin": {
+        "country": "Germany",
+        "region": "EU",
+        "evidence": "Official imprint lists n8n GmbH in Berlin, Germany."
+      },
+      "github": {
+        "repository": "n8n-io/n8n",
+        "stars": 193297,
+        "pushedAt": "2026-06-20T12:51:49Z",
+        "license": "NOASSERTION"
+      },
+      "tags": ["automation", "workflow", "api", "self-hosted", "ai"],
+      "useCases": ["connect APIs", "automate internal processes", "build AI agents", "self-host workflow automation"],
+      "deployment": ["cloud", "self-hosted"],
+      "pricingModel": "open-core",
+      "license": "Sustainable Use License / Enterprise License",
+      "isOpenSource": false,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Top-ranked European project in this research pass by GitHub stars and same-day push activity."
+      },
+      "sources": ["https://api.github.com/repos/n8n-io/n8n", "https://n8n.io/imprint/"]
+    },
+    {
+      "name": "Godot Engine",
+      "category": "developer-tools",
+      "homepage": "https://godotengine.org",
+      "repository": "https://github.com/godotengine/godot",
+      "description": "Open-source 2D and 3D game engine for games, simulations, and interactive software.",
+      "origin": {
+        "country": "Netherlands",
+        "region": "EU",
+        "evidence": "Godot governance lists the Godot Foundation as a Dutch non-profit."
+      },
+      "github": {
+        "repository": "godotengine/godot",
+        "stars": 112815,
+        "pushedAt": "2026-06-19T20:16:52Z",
+        "license": "MIT"
+      },
+      "tags": ["game-engine", "2d", "3d", "open-source", "editor"],
+      "useCases": ["build games", "prototype simulations", "teach programming", "ship interactive apps"],
+      "deployment": ["desktop"],
+      "pricingModel": "free",
+      "license": "MIT",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "European foundation governance with public technical governance and recent repository activity."
+      },
+      "sources": ["https://api.github.com/repos/godotengine/godot", "https://godotengine.org/governance/"]
+    },
+    {
+      "name": "JetBrains IntelliJ Platform",
+      "category": "developer-tools",
+      "homepage": "https://www.jetbrains.com/idea/",
+      "repository": "https://github.com/JetBrains/intellij-community",
+      "description": "IDE platform behind IntelliJ IDEA and many JetBrains developer tools.",
+      "origin": {
+        "country": "Czech Republic",
+        "region": "EU",
+        "evidence": "JetBrains publishes Czech Republic office and company contact details."
+      },
+      "github": {
+        "repository": "JetBrains/intellij-community",
+        "stars": 20249,
+        "pushedAt": "2026-06-20T08:59:08Z",
+        "license": "NOASSERTION"
+      },
+      "tags": ["ide", "java", "kotlin", "platform", "productivity"],
+      "useCases": ["write application code", "build IDE plugins", "debug JVM applications", "manage large codebases"],
+      "deployment": ["desktop"],
+      "pricingModel": "mixed",
+      "license": "Apache-2.0 and JetBrains terms",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Canonical community repository is active; commercial JetBrains products use mixed licensing."
+      },
+      "sources": ["https://api.github.com/repos/JetBrains/intellij-community", "https://www.jetbrains.com/company/contacts/"]
+    },
+    {
+      "name": "Penpot",
+      "category": "developer-tools",
+      "homepage": "https://penpot.app",
+      "repository": "https://github.com/penpot/penpot",
+      "description": "Open-source design and prototyping tool built for design and code collaboration.",
+      "origin": {
+        "country": "Spain",
+        "region": "EU",
+        "evidence": "Penpot is developed by Kaleidos, a Spanish company, and maintains an open-source repository."
+      },
+      "github": {
+        "repository": "penpot/penpot",
+        "stars": 50842,
+        "pushedAt": "2026-06-19T13:05:55Z",
+        "license": "MPL-2.0"
+      },
+      "tags": ["design", "prototype", "ui", "ux", "open-source"],
+      "useCases": ["design interfaces", "prototype product flows", "collaborate with frontend teams", "self-host design tooling"],
+      "deployment": ["cloud", "self-hosted"],
+      "pricingModel": "open-core",
+      "license": "MPL-2.0",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "medium",
+        "maintenance": "active",
+        "notes": "Included as a European-origin developer collaboration tool; verify current legal entity before using for strict sovereignty procurement."
+      },
+      "sources": ["https://api.github.com/repos/penpot/penpot", "https://penpot.app"]
+    }
+  ]
+}
+

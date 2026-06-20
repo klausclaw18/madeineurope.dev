@@ -1,0 +1,139 @@
+{
+  "id": "communication-email",
+  "name": "Communication & Email",
+  "description": "European email, messaging, team communication, transactional mail, and notification tools.",
+  "categoryUseCases": [
+    "send transactional email",
+    "choose privacy-first mail",
+    "run team chat",
+    "build federated communication"
+  ],
+  "entries": [
+    {
+      "name": "Element",
+      "category": "communication-email",
+      "homepage": "https://element.io",
+      "repository": "https://github.com/element-hq/element-web",
+      "description": "Secure collaboration client built on the open Matrix protocol.",
+      "origin": {
+        "country": "United Kingdom",
+        "region": "Europe",
+        "evidence": "Element is a UK company and core contributor to the Matrix ecosystem."
+      },
+      "github": null,
+      "tags": ["chat", "matrix", "federation", "e2ee", "collaboration"],
+      "useCases": ["run secure team chat", "use federated messaging", "self-host collaboration", "replace proprietary chat"],
+      "deployment": ["cloud", "self-hosted"],
+      "pricingModel": "open-core",
+      "license": "Apache-2.0",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Useful for developers who need federated and self-hostable communication."
+      },
+      "sources": ["https://element.io", "https://github.com/element-hq/element-web"]
+    },
+    {
+      "name": "Proton Mail",
+      "category": "communication-email",
+      "homepage": "https://proton.me/mail",
+      "repository": "https://github.com/ProtonMail",
+      "description": "Encrypted email service and privacy suite from Switzerland.",
+      "origin": {
+        "country": "Switzerland",
+        "region": "Europe",
+        "evidence": "Proton is a Swiss privacy company."
+      },
+      "github": null,
+      "tags": ["email", "privacy", "encryption", "switzerland"],
+      "useCases": ["use privacy-first email", "protect account communication", "avoid ad-funded mail", "support encrypted mail"],
+      "deployment": ["cloud"],
+      "pricingModel": "freemium",
+      "license": "Mixed open-source clients",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Commercial service with open-source client components."
+      },
+      "sources": ["https://proton.me/mail", "https://github.com/ProtonMail"]
+    },
+    {
+      "name": "Tuta",
+      "category": "communication-email",
+      "homepage": "https://tuta.com",
+      "repository": "https://github.com/tutao/tutanota",
+      "description": "Encrypted email, calendar, and contacts service from Germany.",
+      "origin": {
+        "country": "Germany",
+        "region": "EU",
+        "evidence": "Tuta is operated by Tutao GmbH in Germany."
+      },
+      "github": null,
+      "tags": ["email", "encryption", "calendar", "privacy", "germany"],
+      "useCases": ["use encrypted email", "host privacy-focused calendars", "protect personal communication", "support EU privacy needs"],
+      "deployment": ["cloud"],
+      "pricingModel": "freemium",
+      "license": "GPL-3.0 client",
+      "isOpenSource": true,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Strong European encrypted mail option."
+      },
+      "sources": ["https://tuta.com", "https://github.com/tutao/tutanota"]
+    },
+    {
+      "name": "Mailjet",
+      "category": "communication-email",
+      "homepage": "https://www.mailjet.com",
+      "repository": null,
+      "description": "Email delivery and marketing platform with APIs for transactional email.",
+      "origin": {
+        "country": "France",
+        "region": "EU",
+        "evidence": "Mailjet was founded in France and is a European email platform."
+      },
+      "github": null,
+      "tags": ["email-api", "transactional-email", "marketing-email", "deliverability"],
+      "useCases": ["send transactional email", "manage deliverability", "send product notifications", "run email campaigns"],
+      "deployment": ["cloud", "api"],
+      "pricingModel": "freemium",
+      "license": null,
+      "isOpenSource": false,
+      "curation": {
+        "confidence": "medium",
+        "maintenance": "active",
+        "notes": "Good service option; verify current legal/controller details for strict procurement."
+      },
+      "sources": ["https://www.mailjet.com"]
+    },
+    {
+      "name": "Brevo",
+      "category": "communication-email",
+      "homepage": "https://www.brevo.com",
+      "repository": null,
+      "description": "Customer communication platform for email, SMS, marketing automation, and transactional messaging.",
+      "origin": {
+        "country": "France",
+        "region": "EU",
+        "evidence": "Brevo is a French customer communication platform."
+      },
+      "github": null,
+      "tags": ["email", "sms", "transactional", "marketing", "automation"],
+      "useCases": ["send transactional messages", "manage customer email", "send SMS notifications", "run marketing automation"],
+      "deployment": ["cloud", "api"],
+      "pricingModel": "freemium",
+      "license": null,
+      "isOpenSource": false,
+      "curation": {
+        "confidence": "high",
+        "maintenance": "active",
+        "notes": "Commercial European communications option."
+      },
+      "sources": ["https://www.brevo.com"]
+    }
+  ]
+}
+
