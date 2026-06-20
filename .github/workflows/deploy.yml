@@ -22,7 +22,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+      - name: Validate directory data
+        run: npm run validate
       - name: Build static site
         run: npm run build
       - name: Upload Pages artifact

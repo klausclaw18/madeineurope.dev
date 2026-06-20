@@ -7,11 +7,40 @@
 // The build step inlines this into each page and provides a JSON island.
 // ============================================================================
 
+// Re-run Lucide for any <span data-lucide="..."> in the document. Safe to call
+// repeatedly; no-op if Lucide isn't loaded yet (CDN may still be in flight).
+const lucideIcons = () => {
+  if (window.lucide?.createIcons) window.lucide.createIcons();
+};
+
 const t = (key, vars = {}) => {
   const dict = window.__i18n__ || {};
   let s = dict[key] ?? key;
   for (const [k, v] of Object.entries(vars)) s = s.replaceAll(`{${k}}`, v);
   return s;
+};
+// Translate an enum value (deployment / pricing / curation.confidence / curation.maintenance)
+// through the active UI dictionary. Falls back to the raw value if no label exists.
+const tEnum = (ns, value) => (value ? t(`enum.${ns}.${value}`) : value || '');
+// Look up a per-language content override (Tier 2/3) by dotted path, e.g.
+// tContent('entries', entry.name, 'description', entry.description). Returns the
+// override for the active language, or the fallback (English/canonical) when missing.
+const tContent = (kind, key, field, fallback) => {
+  const content = window.__i18nContent__ || {};
+  const entry = content[kind]?.[key];
+  if (entry && entry[field] != null) return entry[field];
+  return fallback;
+};
+// Resolve a dotted content path like "categories.ai-ml.name" into a value, given
+// a fallback string (the English text already in the DOM). Returns null if no override.
+const resolveContentPath = (path) => {
+  const content = window.__i18nContent__ || {};
+  const parts = path.split('.');
+  const kind = parts[0];
+  const field = parts[parts.length - 1];
+  const key = parts.slice(1, -1).join('.');
+  const entry = content[kind]?.[key];
+  return entry && entry[field] != null ? entry[field] : null;
 };
 
 const $ = (sel, root = document) => root.querySelector(sel);
@@ -53,13 +82,32 @@ function initI18n() {
   if (!island) return;
   let payload;
   try { payload = JSON.parse(island.textContent); } catch { return; }
-  const { languages = [], translations = {} } = payload;
+  const { languages = [], translations = {}, content = {} } = payload;
   window.__i18n__ = translations.en || {};
+  window.__i18nContentAll__ = content;
+  window.__i18nContent__ = content.en || {};
   window.__i18nLanguages__ = languages;
+
+  // Apply Tier 2/3 content overrides to any node carrying data-i18n-content.
+  // Falls back to the text already in the DOM (the canonical English) when no
+  // override exists for the active language, so partial coverage just works.
+  const applyContent = () => {
+    $$('[data-i18n-content]').forEach((node) => {
+      const value = resolveContentPath(node.dataset.i18nContent);
+      if (value != null) {
+        if (node.hasAttribute('data-i18n-content-array') && Array.isArray(value)) {
+          node.replaceChildren(...value.map((v) => el('span', { class: 'tag', text: v })));
+        } else {
+          node.textContent = value;
+        }
+      }
+    });
+  };
 
   const apply = (code) => {
     const dict = translations[code] || translations.en;
     window.__i18n__ = dict;
+    window.__i18nContent__ = content[code] || content.en || {};
     $$('[data-i18n]').forEach((node) => {
       const key = node.dataset.i18n;
       if (dict[key] != null) node.textContent = dict[key];
@@ -68,9 +116,10 @@ function initI18n() {
       const key = node.dataset.i18nPlaceholder;
       if (dict[key] != null) node.setAttribute('placeholder', dict[key]);
     });
+    applyContent();
     document.documentElement.lang = code;
-    const toggle = $('#langToggle');
-    if (toggle) toggle.textContent = `🌐 ${code.toUpperCase()}`;
+    const label = $('#langLabel');
+    if (label) label.textContent = code.toUpperCase();
     localStorage.setItem('lang', code);
     $$('.lang-card').forEach((c) => c.classList.toggle('active', c.dataset.lang === code));
     document.dispatchEvent(new CustomEvent('langchange', { detail: { code } }));
@@ -144,13 +193,20 @@ async function initDirectory() {
 
   // Skeleton state
   const grid = $('#toolsGrid');
-  if (grid) grid.append(...Array.from({ length: 6 }, () => el('div', { class: 'skeleton-card' })));
+  if (grid && grid.childElementCount === 0) {
+    grid.append(...Array.from({ length: 6 }, () => el('div', { class: 'skeleton-card' })));
+  }
 
   let bundle;
   try {
-    const res = await fetch(dataUrl, { cache: 'force-cache' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    bundle = await res.json();
+    const inline = $('#directory-data');
+    if (inline?.textContent?.trim()) {
+      bundle = JSON.parse(inline.textContent);
+    } else {
+      const res = await fetch(dataUrl, { cache: 'force-cache' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      bundle = await res.json();
+    }
   } catch (err) {
     if (grid) grid.innerHTML = `<div class="dir-empty"><span class="icon">⚠️</span><p>Failed to load directory data.</p></div>`;
     console.error('[directory] fetch failed:', err);
@@ -173,20 +229,22 @@ async function initDirectory() {
   const pricing = dedupe(entries.map((e) => e.pricingModel).filter(Boolean)).sort();
   const sourceOptions = ['oss', 'closed'];
 
-  // Populate select dropdowns
-  const fillSelect = (id, options, labelKey) => {
+  // Populate select dropdowns. `map` optional function translates a raw option
+// value into a human label (for enum filters); the raw value stays the option
+// value so filtering keeps matching on canonical keys across languages.
+const fillSelect = (id, options, labelKey, map) => {
     const sel = $(`#${id}`);
     if (!sel) return;
     const current = sel.value;
     sel.innerHTML = `<option value="">${t(labelKey)}</option>` +
-      options.map((o) => `<option value="${o}">${o}</option>`).join('');
+      options.map((o) => `<option value="${o}">${map ? map(o) : o}</option>`).join('');
     if (current) sel.value = current;
   };
   fillSelect('fCountry', countries, 'dir_filter_country');
   fillSelect('fLicense', licenses, 'dir_filter_license');
-  fillSelect('fDeployment', deployments, 'dir_filter_deployment');
-  fillSelect('fPricing', pricing, 'dir_filter_pricing');
-  fillSelect('fSource', sourceOptions, 'dir_filter_source');
+  fillSelect('fDeployment', deployments, 'dir_filter_deployment', (v) => tEnum('deployment', v));
+  fillSelect('fPricing', pricing, 'dir_filter_pricing', (v) => tEnum('pricing', v));
+  fillSelect('fSource', sourceOptions, 'dir_filter_source', (v) => (v === 'oss' ? t('dir_open_source') : t('dir_closed_source')));
 
   // State
   const state = { q: '', country: '', license: '', deployment: '', pricing: '', source: '', sort: 'name' };
@@ -211,9 +269,16 @@ async function initDirectory() {
     if (state.source === 'closed' && e.isOpenSource) return false;
     if (state.q) {
       const q = state.q.toLowerCase();
+      // Search both canonical English and any active-language translation, so a
+      // user browsing in German can find "Übersetzung" as well as "translation".
+      const descT = tContent('entries', e.name, 'description', e.description);
+      const tagsT = tContent('entries', e.name, 'tags', e.tags || []);
+      const ucT = tContent('entries', e.name, 'useCases', e.useCases || []);
       const hay = [
-        e.name, e.description, e.categoryName,
-        ...(e.tags || []), ...(e.useCases || []), e.origin?.country, e.license,
+        e.name, e.description, descT, e.categoryName,
+        ...(e.tags || []), ...(tagsT || []),
+        ...(e.useCases || []), ...(ucT || []),
+        e.origin?.country, e.license,
       ].filter(Boolean).join(' ').toLowerCase();
       if (!hay.includes(q)) return false;
     }
@@ -235,10 +300,10 @@ async function initDirectory() {
       ? el('span', { class: 'badge oss', text: t('dir_open_source') })
       : el('span', { class: 'badge closed', text: t('dir_closed_source') });
     const confBadge = e.curation?.confidence
-      ? el('span', { class: `badge conf-${e.curation.confidence}`, text: e.curation.confidence })
+      ? el('span', { class: `badge conf-${e.curation.confidence}`, text: tEnum('curation.confidence', e.curation.confidence) })
       : null;
     const maintBadge = e.curation?.maintenance
-      ? el('span', { class: `badge maint-${e.curation.maintenance}`, text: e.curation.maintenance })
+      ? el('span', { class: `badge maint-${e.curation.maintenance}`, text: tEnum('curation.maintenance', e.curation.maintenance) })
       : null;
 
     const head = el('div', { class: 'tool-card-head' },
@@ -246,7 +311,7 @@ async function initDirectory() {
       el('div', { class: 'tool-badges' }, sourceBadge, confBadge, maintBadge),
     );
 
-    const desc = el('p', { class: 'tool-desc', text: e.description });
+    const desc = el('p', { class: 'tool-desc', text: tContent('entries', e.name, 'description', e.description) });
 
     const attrs = el('dl', { class: 'tool-attrs' });
     const addAttr = (labelKey, value) => {
@@ -255,29 +320,35 @@ async function initDirectory() {
     };
     addAttr('dir_origin', e.origin?.country || '');
     addAttr('dir_license', e.license || '—');
-    addAttr('dir_pricing', e.pricingModel || '—');
-    addAttr('dir_deployment', (e.deployment || []).join(', ') || '—');
+    addAttr('dir_pricing', tEnum('pricing', e.pricingModel) || '—');
+    addAttr('dir_deployment', (e.deployment || []).map((d) => tEnum('deployment', d)).join(', ') || '—');
     if (e.github?.stars != null) {
       addAttr('dir_stars', `${fmtStars(e.github.stars)} (${relTime(e.github.pushedAt)})`);
     }
-    if (!isAll) {
-      attrs.append(el('dt', {}, t('dir_categories')), el('dd', {}, e.categoryName));
+    if (isAll) {
+      const catNameT = tContent('categories', e.categoryId, 'name', e.categoryName);
+      attrs.append(el('dt', {}, t('dir_categories')), el('dd', {}, catNameT));
     }
 
-    const tags = (e.tags || []).length
-      ? el('div', { class: 'tool-tags' }, ...e.tags.slice(0, 6).map((tg) => el('span', { class: 'tag', text: tg })))
+    const tagsArr = tContent('entries', e.name, 'tags', e.tags) || [];
+    const tags = tagsArr.length
+      ? el('div', { class: 'tool-tags' }, ...tagsArr.slice(0, 6).map((tg) => el('span', { class: 'tag', text: tg })))
       : null;
-    const useCases = (e.useCases || []).length
-      ? el('div', { class: 'tool-usecases' }, ...e.useCases.slice(0, 6).map((uc) => el('span', { class: 'tag', text: uc })))
+    const useCasesArr = tContent('entries', e.name, 'useCases', e.useCases) || [];
+    const useCases = useCasesArr.length
+      ? el('div', { class: 'tool-usecases' }, ...useCasesArr.slice(0, 6).map((uc) => el('span', { class: 'tag', text: uc })))
       : null;
 
     const footer = el('div', { class: 'tool-footer' },
-      el('a', { class: 'home', href: e.homepage, target: '_blank', rel: 'noopener', text: t('dir_view_homepage') }),
-      e.repository ? el('a', { class: 'repo', href: e.repository, target: '_blank', rel: 'noopener', text: t('dir_view_repo') }) : null,
+      el('a', { class: 'home', href: e.homepage, target: '_blank', rel: 'noopener' },
+        el('span', { 'data-lucide': 'external-link' }), document.createTextNode(' ' + t('dir_view_homepage'))),
+      e.repository ? el('a', { class: 'repo', href: e.repository, target: '_blank', rel: 'noopener' },
+        el('span', { 'data-lucide': 'github' }), document.createTextNode(' ' + t('dir_view_repo'))) : null,
     );
 
-    const evidence = e.origin?.evidence
-      ? el('p', { class: 'tool-evidence', text: e.origin.evidence })
+    const evidenceText = tContent('entries', e.name, 'evidence', e.origin?.evidence);
+    const evidence = evidenceText
+      ? el('p', { class: 'tool-evidence', text: evidenceText })
       : null;
 
     return el('article', {
@@ -297,6 +368,7 @@ async function initDirectory() {
         ),
       );
     }
+    lucideIcons();
     const count = $('#dirCount');
     if (count) {
       const label = filtered.length === 1 ? t('dir_results_one') : t('dir_results_many', { n: filtered.length });
@@ -357,16 +429,66 @@ async function initDirectory() {
     render();
   });
 
-  // Re-render on language change (re-translates empty state + badges)
-  document.addEventListener('langchange', () => render());
+  // Re-render on language change: re-translate cards/empty-state/chips, and
+// re-populate enum-labeled filter dropdowns so their labels localize while
+// the selected raw value (canonical key) is preserved.
+  document.addEventListener('langchange', () => {
+    fillSelect('fCountry', countries, 'dir_filter_country');
+    fillSelect('fLicense', licenses, 'dir_filter_license');
+    fillSelect('fDeployment', deployments, 'dir_filter_deployment', (v) => tEnum('deployment', v));
+    fillSelect('fPricing', pricing, 'dir_filter_pricing', (v) => tEnum('pricing', v));
+    fillSelect('fSource', sourceOptions, 'dir_filter_source', (v) => (v === 'oss' ? t('dir_open_source') : t('dir_closed_source')));
+    render();
+  });
 
   render();
 }
 
+// ── Theme toggle (light / dark) ────────────────────────────────────────────
+function initTheme() {
+  const toggle = $('#themeToggle');
+  const apply = (theme) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    if (toggle) {
+      const isDark = theme === 'dark';
+      const icon = isDark ? 'sun' : 'moon';
+      toggle.innerHTML = `<span data-lucide="${icon}"></span>`;
+      toggle.setAttribute('aria-pressed', String(!isDark));
+    }
+    lucideIcons();
+  };
+  const stored = localStorage.getItem('theme');
+  const prefersLight = window.matchMedia?.('(prefers-color-scheme: light)').matches;
+  const initial = stored || (prefersLight ? 'light' : 'dark');
+  apply(initial);
+  toggle?.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    apply(next);
+  });
+}
+
+// ── Hero starfield ─────────────────────────────────────────────────────────
+function initHeroStars() {
+  const host = $('#heroStars');
+  if (!host || host.childElementCount) return;
+  for (let i = 0; i < 36; i++) {
+    const s = el('span', {
+      class: 'sf-star',
+      style: `left:${Math.round((i * 97) % 100)}%;top:${Math.round((i * 53) % 100)}%;animation-delay:${(i % 7) * 0.6}s;animation-duration:${3 + (i % 4)}s`,
+      text: '★',
+    });
+    host.append(s);
+  }
+}
+
 // ── Boot ───────────────────────────────────────────────────────────────────
 function boot() {
+  initTheme();
   initI18n();
+  initHeroStars();
   initDirectory();
+  lucideIcons();
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
 else boot();

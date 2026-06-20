@@ -1,104 +1,69 @@
-# 🇪🇺 madeineurope.dev
+# madeineurope.dev
 
-> A curated directory of developer tools, software, services & hardware made in Europe.
+A statically generated developer directory for finding software, services, cloud providers, hardware, and infrastructure made in Europe.
 
-The repository is a **declarative directory**: the source of truth lives in `data/` as
-JSON. A zero-dependency static site generator consumes that data and renders a static
-site with a **dynamic front-end** (live search, multi-facet filters, sort, and a
-24-EU-language switcher) into `dist/`.
+The project has two equal outputs:
 
-## What is this?
+- `https://madeineurope.dev` - a fast static web app with search, filters, category pages, and shareable URLs.
+- [`CATALOG.md`](./CATALOG.md) - a generated GitHub catalog for developers who prefer browsing the repository directly.
 
-A community-driven list of software, SaaS, hardware, and cloud services built by
-European companies — privacy-first, GDPR-native, and keeping your data on this side of
-the Atlantic.
+## Find Tools
 
-## Architecture
+Use the web app when you want interactive lookup by:
 
-```
-data/                       ← source of truth (declarative JSON)
-  directory.json            ← taxonomy: list of categories + their files
-  schema.json              ← entry schema (JSON Schema 2020-12)
-  top-european-projects.json
-  categories/*.json        ← one file per category, edited by curators
+- developer use case, such as `add SSO`, `host EU applications`, `build RAG systems`, or `accept iDEAL`
+- country or region of origin
+- deployment model, including `self-hosted`, `cloud`, `managed`, `api`, `desktop`, `hardware`, and `on-prem`
+- source model, license, pricing model, confidence, and maintenance status
+
+Use [`CATALOG.md`](./CATALOG.md) when reviewing the directory on GitHub. It is generated from the same JSON data as the website.
+
+## Repository Model
+
+`data/` is the source of truth. The website and GitHub catalog are consumers.
+
+```text
+data/
+  directory.json                 taxonomy and category file list
+  schema.json                    documented entry shape
+  categories/*.json              curated category entries
+  top-european-projects.json     highlighted open-source projects
 src/
-  templates/landing.html   ← landing page template ({{token}} placeholders)
-  templates/category.html  ← directory page template (search/filter/sort UI)
-  styles.css               ← full stylesheet (EU-themed dark UI)
-  client.mjs               ← browser ES module: i18n switcher + directory engine
-  i18n.json                ← 24 EU languages (extracted from legacy page + UI keys)
+  templates/*.html               static page templates
+  client.mjs                     progressive enhancement for search/filter/sort/i18n
+  styles.css                     app styling
 scripts/
-  build.mjs                ← static site generator → dist/
-  serve.mjs                ← tiny zero-dep dev server
-  extract-i18n.mjs        ← one-off: regenerate src/i18n.json from legacy page
-.github/workflows/deploy.yml ← build + deploy dist/ to GitHub Pages
-dist/                      ← generated site (gitignored, built on push)
+  build.mjs                      validates data and renders dist/
+  catalog.mjs                    generates CATALOG.md
+  validate.mjs                   checks data quality and consistency
 ```
 
-The data is the source of truth; the site is a consumer of it
-(see `DIRECTORY_BEST_PRACTICE_PATTERNS.md`, pattern 10).
+## Local Development
 
-## Getting started
-
-Requires Node.js 20+.
+Requires Node.js 20+ and no npm dependencies.
 
 ```sh
-npm run build     # render data/ → dist/ (landing + one page per category + all.html)
+npm run validate  # check data quality
+npm run catalog   # regenerate CATALOG.md
+npm run build     # validate and render dist/
 npm run serve     # serve dist/ at http://localhost:4321
-npm run dev       # rebuild on data/src/scripts change + serve
-npm start         # build && serve
+npm run dev       # watch data/src/scripts and serve locally
+npm run check     # validate + build
 ```
 
-## Curating content
+## Add or Edit an Entry
 
-Edit the declarative JSON — no HTML to touch.
+1. Pick the closest file in `data/categories/`.
+2. Add or update one JSON object in `entries`.
+3. Include official evidence for European origin in `origin.evidence` and `sources`.
+4. Run `npm run validate`.
+5. Run `npm run catalog` if the data changed.
 
-- Add a tool → append an entry to `data/categories/<category>.json` (see `data/schema.json` for the shape).
-- Add a category → add it to `data/directory.json` and create `data/categories/<id>.json`.
-- Rebuild → `npm run build` (or it auto-rebuilds under `npm run dev`).
-
-Every entry should include: `name`, `category`, `homepage`, `description`,
-`origin.country`, `origin.evidence`, `tags`, `useCases`, `deployment`,
-`pricingModel`, `license`, `isOpenSource`, `curation.confidence`, `sources`
-(see `data/README.md` for lookup examples).
-
-## The dynamic directory
-
-Each category page (and `/all.html`) ships with a sticky toolbar offering:
-
-- **Live text search** across name, description, tags, use cases, origin.
-- **Faceted filters**: country, license, deployment, pricing, open/closed source.
-- **Sort**: name, GitHub stars, recently pushed.
-- **Shareable state**: filters are mirrored to the URL query string.
-- **24-EU-language switcher** with a modal chooser (strings in `src/i18n.json`).
-
-The page initially renders skeleton cards, fetches `/assets/directory.json`
-(the bundled data), then hydrates the grid — all client-side, no framework.
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for curation rules and examples.
 
 ## Deployment
 
-Pushes to `main` trigger `.github/workflows/deploy.yml`, which runs `npm run build`
-and deploys `dist/` to GitHub Pages via `actions/deploy-pages`.
-
-In the repo settings → **Pages → Source**, select **GitHub Actions** (not "Deploy
-from a branch"). The `CNAME` (custom domain `madeineurope.dev`) is copied into
-`dist/` automatically by the build.
-
-## Regenerating i18n
-
-The 24-language strings were extracted from the legacy hand-written landing page
-into `src/i18n.json`. Directory UI strings are added there too. If you need to
-re-extract from an updated legacy file:
-
-```sh
-node scripts/extract-i18n.mjs
-```
-
-## Why it matters
-
-European tools aren't just about compliance. They're about choosing where your data
-lives and who has access to it. GDPR by default, lower latency for EU users, and
-supporting local tech ecosystems.
+GitHub Actions runs validation, builds `dist/`, and deploys it to GitHub Pages. The `CNAME` file is copied into `dist/` during build.
 
 ## License
 

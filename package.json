@@ -6,7 +6,10 @@
   "type": "module",
   "scripts": {
     "clean": "node -e \"import('node:fs').then(fs=>fs.rmSync('dist',{recursive:true,force:true}))\"",
+    "validate": "node scripts/validate.mjs",
+    "catalog": "node scripts/catalog.mjs",
     "build": "node scripts/build.mjs",
+    "check": "npm run validate && npm run build",
     "dev": "node --watch --watch-path=data --watch-path=src --watch-path=scripts scripts/build.mjs & node scripts/serve.mjs dist 4321",
     "serve": "node scripts/serve.mjs dist 4321",
     "start": "npm run build && npm run serve"

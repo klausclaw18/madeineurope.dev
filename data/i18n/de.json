@@ -1,0 +1,203 @@
+{
+  "categories": {
+    "ai-ml": {
+      "name": "KI & ML",
+      "description": "Europäische KI-APIs, Modell-Anbieter, Vektorsuche, ML-Infrastruktur, Übersetzung und KI-Anwendungstooling.",
+      "categoryUseCases": [
+        "KI-Produkte mit europäischen Anbietern bauen",
+        "Vektorsuche betreiben",
+        "Produktinhalte übersetzen",
+        "souveräne KI-Optionen prüfen"
+      ]
+    },
+    "developer-tools": {
+      "name": "Entwickler-Tools",
+      "description": "IDEs, CLIs, Automatisierungsplattformen, Design-to-Code-Tools, Game-Engines und Produktivitäts-Tools, die in Europa entwickelt oder von Europa aus verwaltet werden.",
+      "categoryUseCases": [
+        "Entwickler-Workflows automatisieren",
+        "Spiele und Simulationen entwickeln",
+        "Produkt-Interfaces gestalten",
+        "Code schreiben, refactoren und ausliefern"
+      ]
+    },
+    "cloud-hosting": {
+      "name": "Cloud & Hosting",
+      "description": "Europäische Cloud-Anbieter, VPS-Plattformen, Managed Hosting, Object Storage und Infrastruktur-Dienste.",
+      "categoryUseCases": [
+        "Workloads in europäischen Regionen hosten",
+        "VPS- und Bare-Metal-Server betreiben",
+        "Managed Kubernetes kaufen",
+        "Infrastruktur unter europäischer Rechtsaufsicht belassen"
+      ]
+    },
+    "security-auth": {
+      "name": "Sicherheit & Auth",
+      "description": "Europäische Identity-, Authentifizierungs-, Secrets-, Passwort-, VPN- und Hardware-Sicherheits-Tools.",
+      "categoryUseCases": [
+        "Passkeys und SSO hinzufügen",
+        "Secrets und Passwörter verwalten",
+        "Entwickler-Geräte schützen",
+        "Europäisches VPN oder Security-Hardware wählen"
+      ]
+    },
+    "analytics-monitoring": {
+      "name": "Analytics & Monitoring",
+      "description": "Privacy-Analytics, Observability, Metriken, Dashboards, Alerting und Produktions-Monitoring-Tools aus Europa.",
+      "categoryUseCases": [
+        "Produktionssysteme überwachen",
+        "Dashboards erstellen",
+        "Produktnutzung messen",
+        "Cookie-lastige Analytics ersetzen"
+      ]
+    },
+    "hardware-iot": {
+      "name": "Hardware & IoT",
+      "description": "Europäische Hardware, IoT-Software, Open Hardware, Smart-Home-Plattformen, Boards, Keys und Maker-Tooling.",
+      "categoryUseCases": [
+        "Verbundene Geräte prototypen",
+        "Local-First-Automatisierungen aufbauen",
+        "Entwickler-Hardware absichern",
+        "Mit Open-Hardware-Ökosystemen arbeiten"
+      ]
+    },
+    "databases-storage": {
+      "name": "Datenbanken & Storage",
+      "description": "Europäische Suche, Vektor-Datenbanken, Kollaborations-Storage, Object Storage und Daten-Infrastruktur.",
+      "categoryUseCases": [
+        "Such- und Retrieval-Systeme aufbauen",
+        "Dateien unter europäischer Kontrolle speichern",
+        "Vektor-Suche für KI-Anwendungen betreiben",
+        "Datenbanken und Daten-Backends betreiben"
+      ]
+    },
+    "communication-email": {
+      "name": "Kommunikation & E-Mail",
+      "description": "Europäische E-Mail-, Messaging-, Team-Kommunikations-, Transaktions-Mail- und Benachrichtigungs-Tools.",
+      "categoryUseCases": [
+        "Transaktions-E-Mails senden",
+        "Datenschutzfreundliche Mail wählen",
+        "Team-Chat betreiben",
+        "Föderierte Kommunikation aufbauen"
+      ]
+    },
+    "payments-billing": {
+      "name": "Zahlungen & Billing",
+      "description": "Europäische Zahlungsabwickler, Billing-Plattformen, Rechnungs-Tools, SEPA-, iDEAL- und PSD2-fähige Dienste.",
+      "categoryUseCases": [
+        "Europäische Zahlungsmethoden akzeptieren",
+        "Abonnements abrechnen",
+        "SEPA und iDEAL unterstützen",
+        "Europäische Zahlungs-Infrastruktur wählen"
+      ]
+    }
+  },
+  "entries": {
+    "Mistral AI": {
+      "description": "Französische AI-Firma, die Open-Weight- und kommerzielle Sprachmodelle sowie gehostete APIs anbietet.",
+      "tags": [
+        "llm",
+        "api",
+        "modelle",
+        "open-weights",
+        "frankreich"
+      ],
+      "useCases": [
+        "europäische LLM-APIs aufrufen",
+        "Open-Weight-Modelle nutzen",
+        "KI-Assistenten bauen",
+        "souveräne KI-Anbieter evaluieren"
+      ],
+      "evidence": "Mistral AI ist ein französisches AI-Unternehmen."
+    },
+    "Qdrant": {
+      "description": "Vektordatenbank und semantische Suchmaschine für KI-Anwendungen.",
+      "tags": [
+        "vektor-datenbank",
+        "rag",
+        "semantische-suche",
+        "embeddings",
+        "rust"
+      ],
+      "useCases": [
+        "RAG-Systeme bauen",
+        "Embeddings speichern",
+        "neuronale Suche bereitstellen",
+        "Empfehlungssysteme betreiben"
+      ],
+      "evidence": "Qdrant wird von der Qdrant Solutions GmbH in Berlin, Deutschland, betrieben."
+    },
+    "DeepL": {
+      "description": "KI-Übersetzungs- und Schreibplattform mit Entwickler-APIs.",
+      "tags": [
+        "übersetzung",
+        "api",
+        "lokalisierung",
+        "sprach-ki",
+        "deutschland"
+      ],
+      "useCases": [
+        "Produktinhalte übersetzen",
+        "Dokumentation lokalisieren",
+        "mehrsprachige Apps bauen",
+        "Übersetzungs-APIs nutzen"
+      ],
+      "evidence": "DeepL ist ein deutsches AI-Übersetzungsunternehmen."
+    },
+    "Aleph Alpha": {
+      "description": "Deutsches AI-Unternehmen mit Fokus auf souveräne KI, Enterprise-KI und Anwendungsfälle im öffentlichen Sektor.",
+      "tags": [
+        "souveräne-ki",
+        "llm",
+        "enterprise",
+        "öffentlicher-sektor",
+        "deutschland"
+      ],
+      "useCases": [
+        "souveräne KI evaluieren",
+        "Enterprise-KI-Apps bauen",
+        "regulierte KI-Workloads unterstützen",
+        "europäische KI-Dienste beschaffen"
+      ],
+      "evidence": "Aleph Alpha ist ein deutsches AI-Unternehmen."
+    },
+    "Jina AI": {
+      "description": "KI-Suchunternehmen mit Embedding-, Reranking-, Reader- und neuronaler Such-Tooling.",
+      "tags": [
+        "embeddings",
+        "reranking",
+        "suche",
+        "neuronale-suche",
+        "api"
+      ],
+      "useCases": [
+        "KI-Suche bauen",
+        "Retrieval-Ergebnisse ranken",
+        "Webinhalte extrahieren",
+        "Embedding-APIs nutzen"
+      ],
+      "evidence": "Jina AI hat Berliner Wurzeln und europäische KI-/Such-Infrastrukturpräsenz."
+    }
+  },
+  "topProjects": {
+    "n8n": {
+      "name": "n8n",
+      "description": "Workflow-Automatisierungsplattform zum Verbinden von APIs, SaaS-Tools und Diensten mit flexibler, code-erweiterbarer Automatisierung."
+    },
+    "Godot Engine": {
+      "name": "Godot Engine",
+      "description": "Kostenlose und quelloffene 2D- und 3D-Game-Engine mit breiter Plattformunterstützung."
+    },
+    "Home Assistant": {
+      "name": "Home Assistant",
+      "description": "Quelloffene Smart-Home-Plattform mit Fokus auf lokale Kontrolle und Privatsphäre."
+    },
+    "Elasticsearch": {
+      "name": "Elasticsearch",
+      "description": "Verteilte Such- und Analytics-Engine für Such-, Observability- und Security-Workloads."
+    },
+    "Grafana": {
+      "name": "Grafana",
+      "description": "Offene Observability- und Datenvisualisierungs-Plattform für Metriken, Logs, Traces, Dashboards und Alerts."
+    }
+  }
+}
