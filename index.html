@@ -118,6 +118,35 @@
       text-transform: uppercase;
     }
 
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 78px;
+      padding: 6px 12px;
+      border: 1px solid rgba(255, 204, 0, 0.35);
+      border-radius: 99px;
+      background: rgba(255, 204, 0, 0.08);
+      color: var(--eu-gold);
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .lang-toggle:hover {
+      background: rgba(255, 204, 0, 0.16);
+      box-shadow: 0 0 18px rgba(255, 204, 0, 0.2);
+      transform: translateY(-1px);
+    }
+
     /* ── Hero ─────────────────────────────────────────────── */
     .hero {
       padding: 160px 0 100px;
@@ -496,11 +525,174 @@
       margin-top: 12px;
     }
 
+    /* ── Language modal ──────────────────────────────────── */
+    body.lang-modal-open {
+      overflow: hidden;
+    }
+
+    .lang-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .lang-modal.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lang-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, #001f5c 0%, #000d2e 100%);
+    }
+
+    .lang-modal-content {
+      position: relative;
+      max-width: 900px;
+      max-height: 100vh;
+      margin: 0 auto;
+      padding: 48px 24px;
+      overflow-y: auto;
+      color: #fff;
+    }
+
+    .lang-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-size: 2rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .lang-modal-close:hover {
+      color: var(--eu-gold);
+      transform: scale(1.08);
+    }
+
+    .lang-modal-stars {
+      width: 190px;
+      height: 190px;
+      margin: 0 auto 22px;
+      position: relative;
+      animation: spinStars 20s linear infinite;
+    }
+
+    .lang-modal-stars span {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      color: #FFCC00;
+      font-size: 1rem;
+      line-height: 1;
+      transform: rotate(var(--angle)) translateY(-82px) rotate(calc(-1 * var(--angle))) translate(-50%, -50%);
+      transform-origin: 0 0;
+      text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+    }
+
+    .lang-modal-title {
+      margin-bottom: 28px;
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .lang-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+    }
+
+    .lang-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 16px 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      animation: cardIn 0.4s ease both;
+      color: #fff;
+      min-height: 138px;
+    }
+
+    .lang-card:hover {
+      border-color: #FFCC00;
+      background: rgba(255, 204, 0, 0.08);
+      transform: translateY(-4px);
+    }
+
+    .lang-card.active {
+      border-color: #FFCC00;
+      box-shadow: 0 0 16px rgba(255, 204, 0, 0.3);
+    }
+
+    .lang-card .flag {
+      font-size: 1.6rem;
+      display: block;
+      margin-bottom: 6px;
+      line-height: 1.2;
+      min-height: 38px;
+    }
+
+    .lang-card .native-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #fff;
+      display: block;
+      overflow-wrap: anywhere;
+    }
+
+    .lang-card .countries {
+      font-size: 0.65rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 4px;
+      line-height: 1.3;
+    }
+
+    .lang-card .code-badge {
+      font-family: monospace;
+      font-size: 0.6rem;
+      padding: 1px 5px;
+      background: rgba(255, 204, 0, 0.15);
+      border: 1px solid rgba(255, 204, 0, 0.3);
+      border-radius: 3px;
+      color: #FFCC00;
+      margin-top: 6px;
+      display: inline-block;
+    }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes spinStars {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 820px) {
+      .lang-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
     /* ── Responsive ───────────────────────────────────────── */
     @media (max-width: 640px) {
       .hero { padding: 120px 0 60px; }
       .contribute { padding: 32px 24px; }
       .stats { gap: 24px; }
+      .lang-grid { grid-template-columns: repeat(3, 1fr); }
+      .lang-modal-content { padding: 44px 16px 28px; }
+      .nav-actions { gap: 6px; }
+      .nav-badge { display: none; }
     }
   </style>
 </head>
@@ -513,7 +705,10 @@
         <span>🇪🇺</span>
         <span>madeineurope.dev</span>
       </a>
-      <span class="nav-badge">Coming Soon</span>
+      <div class="nav-actions">
+        <button class="lang-toggle" id="langToggle" type="button" aria-haspopup="dialog" aria-controls="langModal">🌐 EN</button>
+        <span class="nav-badge" data-i18n="nav_badge">Coming Soon</span>
+      </div>
     </div>
   </nav>
 
@@ -526,14 +721,14 @@
         <div class="stars-ring" id="starsRing"></div>
       </div>
 
-      <p class="hero-eyebrow">A curated developer directory</p>
+      <p class="hero-eyebrow" data-i18n="hero_eyebrow">A curated developer directory</p>
 
       <h1>
-        The best dev tools<br />
-        <span class="highlight">made in Europe</span>
+        <span data-i18n="hero_title_1">The best dev tools</span><br />
+        <span class="highlight" data-i18n="hero_title_2">made in Europe</span>
       </h1>
 
-      <p>
+      <p data-i18n="hero_subtitle">
         Software, SaaS, hardware, and cloud services built by
         European companies — privacy-first, GDPR-native, and
         keeping your data on this side of the Atlantic.
@@ -541,10 +736,10 @@
 
       <div class="hero-cta">
         <a href="https://github.com/klausclaw18/madeineurope.dev" class="btn btn-primary" target="_blank" rel="noopener">
-          ⭐ Star on GitHub
+          <span data-i18n="cta_github">⭐ Star on GitHub</span>
         </a>
         <a href="#categories" class="btn btn-outline">
-          Browse categories →
+          <span data-i18n="cta_browse">Browse categories →</span>
         </a>
       </div>
     </div>
@@ -555,19 +750,19 @@
     <div class="stats">
       <div class="stat">
         <div class="stat-number">27</div>
-        <div class="stat-label">EU Member States</div>
+        <div class="stat-label" data-i18n="stat_members">EU Member States</div>
       </div>
       <div class="stat">
         <div class="stat-number">∞</div>
-        <div class="stat-label">Tools to discover</div>
+        <div class="stat-label" data-i18n="stat_tools">Tools to discover</div>
       </div>
       <div class="stat">
         <div class="stat-number">GDPR</div>
-        <div class="stat-label">Native compliance</div>
+        <div class="stat-label" data-i18n="stat_gdpr">Native compliance</div>
       </div>
       <div class="stat">
         <div class="stat-number">OSS</div>
-        <div class="stat-label">Open source focus</div>
+        <div class="stat-label" data-i18n="stat_oss">Open source focus</div>
       </div>
     </div>
   </div>
@@ -576,9 +771,9 @@
   <section class="section" id="categories">
     <div class="container">
       <div class="section-header">
-        <p class="section-label">What's included</p>
-        <h2>Find tools <span class="dim">across every category</span></h2>
-        <p class="lead">
+        <p class="section-label" data-i18n="categories_label">What's included</p>
+        <h2><span data-i18n="categories_title_1">Find tools</span> <span class="dim" data-i18n="categories_title_2">across every category</span></h2>
+        <p class="lead" data-i18n="categories_lead">
           From code editors to cloud infrastructure, curated by developers for developers.
         </p>
       </div>
@@ -699,9 +894,9 @@
   <section class="section" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
     <div class="container">
       <div class="section-header">
-        <p class="section-label">Why it matters</p>
-        <h2>Your stack, <span class="dim">your sovereignty</span></h2>
-        <p class="lead">
+        <p class="section-label" data-i18n="why_label">Why it matters</p>
+        <h2><span data-i18n="why_title_1">Your stack,</span> <span class="dim" data-i18n="why_title_2">your sovereignty</span></h2>
+        <p class="lead" data-i18n="why_lead">
           European tools aren't just about compliance. They're about choosing
           where your data lives and who has access to it.
         </p>
@@ -763,8 +958,8 @@
   <section class="section">
     <div class="container">
       <div class="contribute">
-        <h2>Know a tool that belongs here?</h2>
-        <p>
+        <h2 data-i18n="contribute_title">Know a tool that belongs here?</h2>
+        <p data-i18n="contribute_text">
           This is a community-driven directory. Open a PR on GitHub
           to add software, hardware, or services made in Europe.
         </p>
@@ -773,7 +968,7 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
             </svg>
-            Contribute on GitHub
+            <span data-i18n="contribute_btn">Contribute on GitHub</span>
           </a>
           <a href="#categories" class="btn btn-outline">
             Browse the directory →
@@ -787,14 +982,80 @@
   <footer>
     <div class="container">
       <p>
-        Made with ❤️ in <strong>Europe</strong> &nbsp;·&nbsp;
+        <span data-i18n="footer_text">Made with ❤️ in Europe</span> &nbsp;·&nbsp;
         <a href="https://github.com/klausclaw18/madeineurope.dev" target="_blank" rel="noopener">GitHub</a>
       </p>
       <span class="footer-stars">★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★</span>
     </div>
   </footer>
 
+  <div id="langModal" class="lang-modal" role="dialog" aria-modal="true" aria-label="Language chooser">
+    <div class="lang-modal-backdrop"></div>
+    <div class="lang-modal-content">
+      <button class="lang-modal-close" id="langModalClose" aria-label="Close">×</button>
+      <div class="lang-modal-stars" id="langModalStars" aria-hidden="true"></div>
+      <h2 class="lang-modal-title" data-i18n="choose_language">Choose your language</h2>
+      <div class="lang-grid" id="langGrid"></div>
+    </div>
+  </div>
+
   <script>
+    const langData = {
+      "en": {"nav_badge":"Coming Soon","hero_eyebrow":"A curated developer directory","hero_title_1":"The best dev tools","hero_title_2":"made in Europe","hero_subtitle":"Software, SaaS, hardware, and cloud services built by European companies — privacy-first, GDPR-native, and keeping your data on this side of the Atlantic.","cta_github":"⭐ Star on GitHub","cta_browse":"Browse categories →","stat_members":"EU Member States","stat_tools":"Tools to discover","stat_gdpr":"Native compliance","stat_oss":"Open source focus","categories_label":"What's included","categories_title_1":"Find tools","categories_title_2":"across every category","categories_lead":"From code editors to cloud infrastructure, curated by developers for developers.","why_label":"Why it matters","why_title_1":"Your stack,","why_title_2":"your sovereignty","why_lead":"European tools aren't just about compliance. They're about choosing where your data lives and who has access to it.","contribute_title":"Know a tool that belongs here?","contribute_text":"This is a community-driven directory. Open a PR on GitHub to add software, hardware, or services made in Europe.","contribute_btn":"Contribute on GitHub","footer_text":"Made with ❤️ in Europe","choose_language":"Choose your language"},
+      "de": {"nav_badge":"Demnächst","hero_eyebrow":"Ein kuratiertes Entwickler-Verzeichnis","hero_title_1":"Die besten Dev-Tools","hero_title_2":"made in Europe","hero_subtitle":"Software, SaaS, Hardware und Cloud-Dienste von europäischen Unternehmen — Privacy-first, DSGVO-nativ und deine Daten bleiben auf dieser Seite des Atlantiks.","cta_github":"⭐ Auf GitHub markieren","cta_browse":"Kategorien durchsuchen →","stat_members":"EU-Mitgliedstaaten","stat_tools":"Tools zu entdecken","stat_gdpr":"Native Konformität","stat_oss":"Open-Source-Fokus","categories_label":"Was enthalten ist","categories_title_1":"Tools finden","categories_title_2":"in jeder Kategorie","categories_lead":"Von Code-Editoren bis hin zur Cloud-Infrastruktur, kuratiert von Entwicklern für Entwickler.","why_label":"Warum es wichtig ist","why_title_1":"Dein Stack,","why_title_2":"deine Souveränität","why_lead":"Europäische Tools sind nicht nur für Compliance. Es geht darum zu wählen, wo deine Daten leben und wer Zugriff darauf hat.","contribute_title":"Kennst du ein Tool, das hier fehlt?","contribute_text":"Dies ist ein community-getriebenes Verzeichnis. Öffne einen PR auf GitHub, um Software, Hardware oder Dienste aus Europa hinzuzufügen.","contribute_btn":"Auf GitHub beitragen","footer_text":"Mit ❤️ in Europa gemacht","choose_language":"Sprache wählen"},
+      "fr": {"nav_badge":"Bientôt disponible","hero_eyebrow":"Un annuaire développeur sélectionné","hero_title_1":"Les meilleurs outils dev","hero_title_2":"made in Europe","hero_subtitle":"Logiciels, SaaS, matériel et services cloud créés par des entreprises européennes — privacy-first, natif RGPD, vos données restent de ce côté de l'Atlantique.","cta_github":"⭐ Étoiler sur GitHub","cta_browse":"Parcourir les catégories →","stat_members":"États membres de l'UE","stat_tools":"Outils à découvrir","stat_gdpr":"Conformité native","stat_oss":"Focus open source","categories_label":"Ce qui est inclus","categories_title_1":"Trouver des outils","categories_title_2":"dans chaque catégorie","categories_lead":"Des éditeurs de code à l'infrastructure cloud, curatés par des développeurs pour des développeurs.","why_label":"Pourquoi c'est important","why_title_1":"Votre stack,","why_title_2":"votre souveraineté","why_lead":"Les outils européens ne sont pas seulement une question de conformité. Il s'agit de choisir où vivent vos données et qui y a accès.","contribute_title":"Vous connaissez un outil qui manque ici ?","contribute_text":"C'est un annuaire communautaire. Ouvrez une PR sur GitHub pour ajouter des logiciels, du matériel ou des services made in Europe.","contribute_btn":"Contribuer sur GitHub","footer_text":"Fait avec ❤️ en Europe","choose_language":"Choisir la langue"},
+      "nl": {"nav_badge":"Binnenkort","hero_eyebrow":"Een gecureerde ontwikkelaarsdirectory","hero_title_1":"De beste dev-tools","hero_title_2":"made in Europe","hero_subtitle":"Software, SaaS, hardware en clouddiensten gebouwd door Europese bedrijven — privacy-first, AVG-native en je data blijft aan deze kant van de Atlantische Oceaan.","cta_github":"⭐ Ster op GitHub","cta_browse":"Categorieën verkennen →","stat_members":"EU-lidstaten","stat_tools":"Tools te ontdekken","stat_gdpr":"Native compliance","stat_oss":"Open source focus","categories_label":"Wat is inbegrepen","categories_title_1":"Tools vinden","categories_title_2":"in elke categorie","categories_lead":"Van code-editors tot cloudinfrastructuur, samengesteld door ontwikkelaars voor ontwikkelaars.","why_label":"Waarom het belangrijk is","why_title_1":"Jouw stack,","why_title_2":"jouw soevereiniteit","why_lead":"Europese tools gaan niet alleen over compliance. Het gaat erom te kiezen waar je data leeft en wie er toegang toe heeft.","contribute_title":"Ken je een tool die hier thuishoort?","contribute_text":"Dit is een community-gedreven directory. Open een PR op GitHub om software, hardware of diensten made in Europe toe te voegen.","contribute_btn":"Bijdragen op GitHub","footer_text":"Gemaakt met ❤️ in Europa","choose_language":"Taal kiezen"},
+      "es": {"nav_badge":"Próximamente","hero_eyebrow":"Un directorio de desarrolladores curado","hero_title_1":"Las mejores herramientas dev","hero_title_2":"made in Europe","hero_subtitle":"Software, SaaS, hardware y servicios en la nube creados por empresas europeas — privacy-first, RGPD nativo y tus datos permanecen en este lado del Atlántico.","cta_github":"⭐ Destacar en GitHub","cta_browse":"Explorar categorías →","stat_members":"Estados miembros de la UE","stat_tools":"Herramientas por descubrir","stat_gdpr":"Cumplimiento nativo","stat_oss":"Enfoque open source","categories_label":"Qué está incluido","categories_title_1":"Encuentra herramientas","categories_title_2":"en cada categoría","categories_lead":"Desde editores de código hasta infraestructura en la nube, curado por desarrolladores para desarrolladores.","why_label":"Por qué importa","why_title_1":"Tu stack,","why_title_2":"tu soberanía","why_lead":"Las herramientas europeas no son solo cumplimiento normativo. Se trata de elegir dónde viven tus datos y quién tiene acceso a ellos.","contribute_title":"¿Conoces una herramienta que pertenece aquí?","contribute_text":"Este es un directorio impulsado por la comunidad. Abre una PR en GitHub para agregar software, hardware o servicios made in Europe.","contribute_btn":"Contribuir en GitHub","footer_text":"Hecho con ❤️ en Europa","choose_language":"Elegir idioma"},
+      "it": {"nav_badge":"Prossimamente","hero_eyebrow":"Una directory curata per sviluppatori","hero_title_1":"I migliori strumenti dev","hero_title_2":"made in Europe","hero_subtitle":"Software, SaaS, hardware e servizi cloud creati da aziende europee — privacy-first, GDPR nativo e i tuoi dati rimangono da questo lato dell'Atlantico.","cta_github":"⭐ Stella su GitHub","cta_browse":"Esplora categorie →","stat_members":"Stati membri UE","stat_tools":"Strumenti da scoprire","stat_gdpr":"Conformità nativa","stat_oss":"Focus open source","categories_label":"Cosa è incluso","categories_title_1":"Trova strumenti","categories_title_2":"in ogni categoria","categories_lead":"Dagli editor di codice all'infrastruttura cloud, curati da sviluppatori per sviluppatori.","why_label":"Perché è importante","why_title_1":"Il tuo stack,","why_title_2":"la tua sovranità","why_lead":"Gli strumenti europei non riguardano solo la conformità. Si tratta di scegliere dove vivono i tuoi dati e chi vi ha accesso.","contribute_title":"Conosci uno strumento che appartiene qui?","contribute_text":"Questa è una directory guidata dalla community. Apri una PR su GitHub per aggiungere software, hardware o servizi made in Europe.","contribute_btn":"Contribuisci su GitHub","footer_text":"Fatto con ❤️ in Europa","choose_language":"Scegli la lingua"},
+      "pt": {"nav_badge":"Em breve","hero_eyebrow":"Um diretório de desenvolvedores curado","hero_title_1":"As melhores ferramentas dev","hero_title_2":"made in Europe","hero_subtitle":"Software, SaaS, hardware e serviços em nuvem criados por empresas europeias — privacy-first, RGPD nativo e os seus dados ficam neste lado do Atlântico.","cta_github":"⭐ Estrelar no GitHub","cta_browse":"Explorar categorias →","stat_members":"Estados membros da UE","stat_tools":"Ferramentas para descobrir","stat_gdpr":"Conformidade nativa","stat_oss":"Foco open source","categories_label":"O que está incluído","categories_title_1":"Encontrar ferramentas","categories_title_2":"em cada categoria","categories_lead":"De editores de código a infraestrutura em nuvem, curado por desenvolvedores para desenvolvedores.","why_label":"Por que é importante","why_title_1":"O seu stack,","why_title_2":"a sua soberania","why_lead":"As ferramentas europeias não são apenas sobre conformidade. Trata-se de escolher onde os seus dados vivem e quem tem acesso a eles.","contribute_title":"Conhece uma ferramenta que pertence aqui?","contribute_text":"Este é um diretório impulsionado pela comunidade. Abra um PR no GitHub para adicionar software, hardware ou serviços made in Europe.","contribute_btn":"Contribuir no GitHub","footer_text":"Feito com ❤️ na Europa","choose_language":"Escolher idioma"},
+      "pl": {"nav_badge":"Wkrótce","hero_eyebrow":"Wyselekcjonowany katalog deweloperski","hero_title_1":"Najlepsze narzędzia dev","hero_title_2":"made in Europe","hero_subtitle":"Oprogramowanie, SaaS, sprzęt i usługi chmurowe tworzone przez europejskie firmy — privacy-first, natywne RODO i Twoje dane pozostają po tej stronie Atlantyku.","cta_github":"⭐ Gwiazdka na GitHub","cta_browse":"Przeglądaj kategorie →","stat_members":"Państwa członkowskie UE","stat_tools":"Narzędzia do odkrycia","stat_gdpr":"Natywna zgodność","stat_oss":"Skupienie na open source","categories_label":"Co jest zawarte","categories_title_1":"Znajdź narzędzia","categories_title_2":"w każdej kategorii","categories_lead":"Od edytorów kodu po infrastrukturę chmurową, kurowane przez programistów dla programistów.","why_label":"Dlaczego to ważne","why_title_1":"Twój stack,","why_title_2":"Twoja suwerenność","why_lead":"Europejskie narzędzia to nie tylko kwestia zgodności z przepisami. Chodzi o wybór, gdzie żyją Twoje dane i kto ma do nich dostęp.","contribute_title":"Znasz narzędzie, które tu pasuje?","contribute_text":"To jest katalog prowadzony przez społeczność. Otwórz PR na GitHub, aby dodać oprogramowanie, sprzęt lub usługi made in Europe.","contribute_btn":"Współtwórz na GitHub","footer_text":"Zrobione z ❤️ w Europie","choose_language":"Wybierz język"},
+      "sv": {"nav_badge":"Kommer snart","hero_eyebrow":"En kurerad utvecklarkatalog","hero_title_1":"De bästa dev-verktygen","hero_title_2":"made in Europe","hero_subtitle":"Programvara, SaaS, hårdvara och molntjänster byggda av europeiska företag — privacy-first, GDPR-native och dina data stannar på den här sidan av Atlanten.","cta_github":"⭐ Stjärnmärk på GitHub","cta_browse":"Bläddra kategorier →","stat_members":"EU-medlemsstater","stat_tools":"Verktyg att utforska","stat_gdpr":"Inbyggd efterlevnad","stat_oss":"Open source-fokus","categories_label":"Vad ingår","categories_title_1":"Hitta verktyg","categories_title_2":"i varje kategori","categories_lead":"Från kodredigerare till molninfrastruktur, kurerat av utvecklare för utvecklare.","why_label":"Varför det spelar roll","why_title_1":"Din stack,","why_title_2":"din suveränitet","why_lead":"Europeiska verktyg handlar inte bara om efterlevnad. Det handlar om att välja var dina data bor och vem som har tillgång till dem.","contribute_title":"Känner du till ett verktyg som hör hemma här?","contribute_text":"Detta är en community-driven katalog. Öppna en PR på GitHub för att lägga till programvara, hårdvara eller tjänster made in Europe.","contribute_btn":"Bidra på GitHub","footer_text":"Gjord med ❤️ i Europa","choose_language":"Välj språk"},
+      "da": {"nav_badge":"Kommer snart","hero_eyebrow":"En kureret udviklerkatalog","hero_title_1":"De bedste dev-værktøjer","hero_title_2":"made in Europe","hero_subtitle":"Software, SaaS, hardware og cloudtjenester bygget af europæiske virksomheder — privacy-first, GDPR-native og dine data forbliver på denne side af Atlanterhavet.","cta_github":"⭐ Stjerne på GitHub","cta_browse":"Gennemse kategorier →","stat_members":"EU-medlemsstater","stat_tools":"Værktøjer at opdage","stat_gdpr":"Native overholdelse","stat_oss":"Open source-fokus","categories_label":"Hvad er inkluderet","categories_title_1":"Find værktøjer","categories_title_2":"i hver kategori","categories_lead":"Fra kodeeditorer til skyinfrastruktur, kurateret af udviklere til udviklere.","why_label":"Hvorfor det betyder noget","why_title_1":"Din stack,","why_title_2":"din suverænitet","why_lead":"Europæiske værktøjer handler ikke kun om overholdelse. Det handler om at vælge, hvor dine data bor, og hvem der har adgang til dem.","contribute_title":"Kender du et værktøj, der hører til her?","contribute_text":"Dette er en fællesskabsdrevet katalog. Åbn en PR på GitHub for at tilføje software, hardware eller tjenester made in Europe.","contribute_btn":"Bidrag på GitHub","footer_text":"Lavet med ❤️ i Europa","choose_language":"Vælg sprog"},
+      "fi": {"nav_badge":"Tulossa pian","hero_eyebrow":"Kuratoitu kehittäjähakemisto","hero_title_1":"Parhaat dev-työkalut","hero_title_2":"made in Europe","hero_subtitle":"Eurooppalaisten yritysten rakentama ohjelmisto, SaaS, laitteisto ja pilvipalvelut — tietosuoja ensin, GDPR-natiivi ja tietosi pysyvät tällä puolella Atlanttia.","cta_github":"⭐ Tähtää GitHubissa","cta_browse":"Selaa kategorioita →","stat_members":"EU:n jäsenvaltiot","stat_tools":"Löydettäviä työkaluja","stat_gdpr":"Natiivi vaatimustenmukaisuus","stat_oss":"Avoimen lähdekoodin fokus","categories_label":"Mitä sisältyy","categories_title_1":"Löydä työkaluja","categories_title_2":"jokaisesta kategoriasta","categories_lead":"Koodieditoreista pilviinfrastruktuuriin, kehittäjiltä kehittäjille.","why_label":"Miksi sillä on merkitystä","why_title_1":"Stackisi,","why_title_2":"suvereniteettisi","why_lead":"Eurooppalaiset työkalut eivät ole vain vaatimustenmukaisuutta varten. Kyse on siitä, missä datasi asuu ja kenellä on pääsy siihen.","contribute_title":"Tiedätkö työkalun, joka kuuluu tähän?","contribute_text":"Tämä on yhteisövetoinen hakemisto. Avaa PR GitHubissa lisätäksesi ohjelmistoja, laitteistoa tai palveluita made in Europe.","contribute_btn":"Osallistu GitHubissa","footer_text":"Tehty ❤️:llä Euroopassa","choose_language":"Valitse kieli"},
+      "cs": {"nav_badge":"Již brzy","hero_eyebrow":"Kurátorský adresář pro vývojáře","hero_title_1":"Nejlepší dev nástroje","hero_title_2":"made in Europe","hero_subtitle":"Software, SaaS, hardware a cloudové služby vytvořené evropskými společnostmi — privacy-first, nativní GDPR a vaše data zůstávají na této straně Atlantiku.","cta_github":"⭐ Hvězdička na GitHub","cta_browse":"Procházet kategorie →","stat_members":"Členské státy EU","stat_tools":"Nástroje k objevení","stat_gdpr":"Nativní soulad","stat_oss":"Zaměření na open source","categories_label":"Co je zahrnuto","categories_title_1":"Najít nástroje","categories_title_2":"v každé kategorii","categories_lead":"Od kódových editorů po cloudovou infrastrukturu, kurátorsky zpracované vývojáři pro vývojáře.","why_label":"Proč na tom záleží","why_title_1":"Váš stack,","why_title_2":"vaše suverenita","why_lead":"Evropské nástroje nejsou jen o dodržování předpisů. Jde o výběr, kde žijí vaše data a kdo k nim má přístup.","contribute_title":"Znáte nástroj, který sem patří?","contribute_text":"Toto je komunitně řízený adresář. Otevřete PR na GitHub a přidejte software, hardware nebo služby made in Europe.","contribute_btn":"Přispět na GitHub","footer_text":"Vyrobeno s ❤️ v Evropě","choose_language":"Vybrat jazyk"},
+      "ro": {"nav_badge":"În curând","hero_eyebrow":"Un director de dezvoltatori curatorizat","hero_title_1":"Cele mai bune instrumente dev","hero_title_2":"made in Europe","hero_subtitle":"Software, SaaS, hardware și servicii cloud construite de companii europene — privacy-first, GDPR nativ și datele tale rămân pe această parte a Atlanticului.","cta_github":"⭐ Stea pe GitHub","cta_browse":"Explorați categorii →","stat_members":"State membre UE","stat_tools":"Instrumente de descoperit","stat_gdpr":"Conformitate nativă","stat_oss":"Focus open source","categories_label":"Ce este inclus","categories_title_1":"Găsiți instrumente","categories_title_2":"în fiecare categorie","categories_lead":"De la editoare de cod la infrastructură cloud, curatorizat de dezvoltatori pentru dezvoltatori.","why_label":"De ce contează","why_title_1":"Stack-ul tău,","why_title_2":"suveranitatea ta","why_lead":"Instrumentele europene nu sunt doar despre conformitate. Este vorba despre a alege unde trăiesc datele tale și cine are acces la ele.","contribute_title":"Cunoști un instrument care aparține aici?","contribute_text":"Acesta este un director condus de comunitate. Deschideți un PR pe GitHub pentru a adăuga software, hardware sau servicii made in Europe.","contribute_btn":"Contribuiți pe GitHub","footer_text":"Realizat cu ❤️ în Europa","choose_language":"Alegeți limba"},
+      "hu": {"nav_badge":"Hamarosan","hero_eyebrow":"Egy gondosan válogatott fejlesztői könyvtár","hero_title_1":"A legjobb dev eszközök","hero_title_2":"made in Europe","hero_subtitle":"Európai vállalatok által épített szoftverek, SaaS-ok, hardverek és felhőszolgáltatások — privacy-first, natív GDPR és adataid ezen az oldalon maradnak az Atlanti-óceánnak.","cta_github":"⭐ Csillag a GitHubon","cta_browse":"Kategóriák böngészése →","stat_members":"EU-tagállamok","stat_tools":"Felfedezendő eszközök","stat_gdpr":"Natív megfelelés","stat_oss":"Nyílt forráskódú fókusz","categories_label":"Mi van benne","categories_title_1":"Eszközök keresése","categories_title_2":"minden kategóriában","categories_lead":"A kódszerkesztőktől a felhőinfrastruktúráig, fejlesztők által kurálva fejlesztők számára.","why_label":"Miért fontos","why_title_1":"A te stacked,","why_title_2":"a te szuverenitásod","why_lead":"Az európai eszközök nem csupán megfelelési kérdések. Arról szól, hogy megválaszd, hol élnek az adataid és kinek van hozzáférése.","contribute_title":"Tudsz egy eszközről, ami ide tartozik?","contribute_text":"Ez egy közösség által vezérelt könyvtár. Nyiss egy PR-t a GitHubon, hogy hozzáadj szoftvereket, hardvereket vagy szolgáltatásokat made in Europe.","contribute_btn":"Hozzájárulás a GitHubon","footer_text":"Készült ❤️-vel Európában","choose_language":"Nyelv választása"},
+      "sk": {"nav_badge":"Čoskoro","hero_eyebrow":"Kurátorský adresár pre vývojárov","hero_title_1":"Najlepšie dev nástroje","hero_title_2":"made in Europe","hero_subtitle":"Softvér, SaaS, hardvér a cloudové služby vytvorené európskymi spoločnosťami — privacy-first, natívny GDPR a vaše dáta zostávajú na tejto strane Atlantiku.","cta_github":"⭐ Hviezda na GitHub","cta_browse":"Prechádzať kategórie →","stat_members":"Členské štáty EÚ","stat_tools":"Nástroje na objavenie","stat_gdpr":"Natívny súlad","stat_oss":"Zameranie na open source","categories_label":"Čo je zahrnuté","categories_title_1":"Nájsť nástroje","categories_title_2":"v každej kategórii","categories_lead":"Od kódových editorov po cloudovú infraštruktúru, kurátorsky spracované vývojármi pre vývojárov.","why_label":"Prečo na tom záleží","why_title_1":"Váš stack,","why_title_2":"vaša suverenita","why_lead":"Európske nástroje nie sú len o dodržiavaní predpisov. Ide o výber, kde žijú vaše dáta a kto k nim má prístup.","contribute_title":"Poznáte nástroj, ktorý sem patrí?","contribute_text":"Toto je komunitne riadený adresár. Otvorte PR na GitHub a pridajte softvér, hardvér alebo služby made in Europe.","contribute_btn":"Prispieť na GitHub","footer_text":"Vyrobené s ❤️ v Európe","choose_language":"Vybrať jazyk"},
+      "el": {"nav_badge":"Έρχεται σύντομα","hero_eyebrow":"Ένας επιμελημένος κατάλογος προγραμματιστών","hero_title_1":"Τα καλύτερα dev εργαλεία","hero_title_2":"made in Europe","hero_subtitle":"Λογισμικό, SaaS, υλικό και υπηρεσίες cloud που δημιουργήθηκαν από ευρωπαϊκές εταιρείες — privacy-first, GDPR-native και τα δεδομένα σας παραμένουν σε αυτή την πλευρά του Ατλαντικού.","cta_github":"⭐ Αστέρι στο GitHub","cta_browse":"Περιήγηση κατηγοριών →","stat_members":"Κράτη μέλη ΕΕ","stat_tools":"Εργαλεία για ανακάλυψη","stat_gdpr":"Εγγενής συμμόρφωση","stat_oss":"Εστίαση open source","categories_label":"Τι περιλαμβάνεται","categories_title_1":"Βρείτε εργαλεία","categories_title_2":"σε κάθε κατηγορία","categories_lead":"Από επεξεργαστές κώδικα έως cloud υποδομή, επιμελημένο από προγραμματιστές για προγραμματιστές.","why_label":"Γιατί έχει σημασία","why_title_1":"Το stack σου,","why_title_2":"η κυριαρχία σου","why_lead":"Τα ευρωπαϊκά εργαλεία δεν αφορούν μόνο τη συμμόρφωση. Πρόκειται για την επιλογή πού ζουν τα δεδομένα σας και ποιος έχει πρόσβαση σε αυτά.","contribute_title":"Γνωρίζετε ένα εργαλείο που ανήκει εδώ;","contribute_text":"Αυτός είναι ένας κατάλογος που οδηγείται από την κοινότητα. Ανοίξτε ένα PR στο GitHub για να προσθέσετε λογισμικό, υλικό ή υπηρεσίες made in Europe.","contribute_btn":"Συνεισφέρετε στο GitHub","footer_text":"Φτιαγμένο με ❤️ στην Ευρώπη","choose_language":"Επιλογή γλώσσας"},
+      "bg": {"nav_badge":"Очаквайте скоро","hero_eyebrow":"Курирана директория за разработчици","hero_title_1":"Най-добрите dev инструменти","hero_title_2":"made in Europe","hero_subtitle":"Софтуер, SaaS, хардуер и облачни услуги, изградени от европейски компании — privacy-first, GDPR-нативни и данните ви остават на тази страна на Атлантика.","cta_github":"⭐ Звезда в GitHub","cta_browse":"Разгледайте категориите →","stat_members":"Държави членки на ЕС","stat_tools":"Инструменти за открие","stat_gdpr":"Нативно съответствие","stat_oss":"Фокус върху open source","categories_label":"Какво е включено","categories_title_1":"Намерете инструменти","categories_title_2":"във всяка категория","categories_lead":"От редактори на код до облачна инфраструктура, курирано от разработчици за разработчици.","why_label":"Защо е важно","why_title_1":"Вашият stack,","why_title_2":"вашият суверенитет","why_lead":"Европейските инструменти не са само за съответствие. Те са за избор на това, където живеят вашите данни и кой има достъп до тях.","contribute_title":"Познавате ли инструмент, който принадлежи тук?","contribute_text":"Това е директория, управлявана от общността. Отворете PR в GitHub, за да добавите софтуер, хардуер или услуги made in Europe.","contribute_btn":"Допринесете в GitHub","footer_text":"Направено с ❤️ в Европа","choose_language":"Изберете език"},
+      "hr": {"nav_badge":"Uskoro","hero_eyebrow":"Kuratorski direktorij za programere","hero_title_1":"Najbolji dev alati","hero_title_2":"made in Europe","hero_subtitle":"Softver, SaaS, hardver i usluge u oblaku koje grade europske tvrtke — privacy-first, GDPR-nativan i vaši podaci ostaju na ovoj strani Atlantika.","cta_github":"⭐ Zvjezdica na GitHub","cta_browse":"Pregledaj kategorije →","stat_members":"Države članice EU","stat_tools":"Alati za otkrivanje","stat_gdpr":"Izvorna usklađenost","stat_oss":"Fokus na open source","categories_label":"Što je uključeno","categories_title_1":"Pronađi alate","categories_title_2":"u svakoj kategoriji","categories_lead":"Od uređivača koda do cloud infrastrukture, kuratorski obrađeno od programera za programere.","why_label":"Zašto je važno","why_title_1":"Vaš stack,","why_title_2":"vaš suverenitet","why_lead":"Europski alati nisu samo za usklađenost. Radi se o odabiru gdje žive vaši podaci i tko ima pristup njima.","contribute_title":"Znate li alat koji pripada ovdje?","contribute_text":"Ovo je direktorij koji vodi zajednica. Otvorite PR na GitHub-u za dodavanje softvera, hardvera ili usluga made in Europe.","contribute_btn":"Doprinesite na GitHub-u","footer_text":"Napravljeno s ❤️ u Europi","choose_language":"Odaberite jezik"},
+      "sl": {"nav_badge":"Kmalu","hero_eyebrow":"Kuriran imenik za razvijalce","hero_title_1":"Najboljša dev orodja","hero_title_2":"made in Europe","hero_subtitle":"Programska oprema, SaaS, strojna oprema in storitve v oblaku, ki jih gradijo evropska podjetja — privacy-first, GDPR-native in vaši podatki ostanejo na tej strani Atlantika.","cta_github":"⭐ Zvezdica na GitHub","cta_browse":"Prebrskaj kategorije →","stat_members":"Države članice EU","stat_tools":"Orodja za odkrivanje","stat_gdpr":"Izvorna skladnost","stat_oss":"Fokus na odprto kodo","categories_label":"Kaj je vključeno","categories_title_1":"Poišči orodja","categories_title_2":"v vsaki kategoriji","categories_lead":"Od urejevalnikov kode do oblačne infrastrukture, kurirano od razvijalcev za razvijalce.","why_label":"Zakaj je to pomembno","why_title_1":"Vaš stack,","why_title_2":"vaša suverenost","why_lead":"Evropska orodja niso samo za skladnost. Gre za izbiro, kje živijo vaši podatki in kdo ima dostop do njih.","contribute_title":"Poznate orodje, ki spada sem?","contribute_text":"To je imenik, ki ga vodi skupnost. Odprite PR na GitHub, da dodate programsko opremo, strojno opremo ali storitve made in Europe.","contribute_btn":"Prispevajte na GitHub","footer_text":"Narejeno z ❤️ v Evropi","choose_language":"Izberi jezik"},
+      "et": {"nav_badge":"Tulemas peagi","hero_eyebrow":"Kureeritud arendajate kataloog","hero_title_1":"Parimad dev-tööriistad","hero_title_2":"made in Europe","hero_subtitle":"Tarkvara, SaaS, riistvara ja pilveteenused, mille on loonud Euroopa ettevõtted — privacy-first, GDPR-native ja su andmed jäävad Atlandi ookeani sellele kaldale.","cta_github":"⭐ Täht GitHubis","cta_browse":"Sirvi kategooriaid →","stat_members":"ELi liikmesriigid","stat_tools":"Tööriistad avastamiseks","stat_gdpr":"Natiivne vastavus","stat_oss":"Avatud lähtekoodile keskendumine","categories_label":"Mis on kaasatud","categories_title_1":"Leia tööriistad","categories_title_2":"igast kategooriast","categories_lead":"Koodiredaktoritest pilvinfrastruktuurini, kureeritud arendajatelt arendajatele.","why_label":"Miks see oluline on","why_title_1":"Sinu stack,","why_title_2":"sinu suveräänsus","why_lead":"Euroopa tööriistad ei ole ainult vastavuse pärast. Tegemist on valikuga, kus su andmed elavad ja kellel on neile ligipääs.","contribute_title":"Tead tööriista, mis siia kuulub?","contribute_text":"See on kogukonna juhitud kataloog. Avage PR GitHubis, et lisada tarkvara, riistvara või teenuseid made in Europe.","contribute_btn":"Panustan GitHubis","footer_text":"Tehtud ❤️-ga Euroopas","choose_language":"Vali keel"},
+      "lv": {"nav_badge":"Drīzumā","hero_eyebrow":"Kurēts izstrādātāju katalogs","hero_title_1":"Labākie dev rīki","hero_title_2":"made in Europe","hero_subtitle":"Programmatūra, SaaS, aparatūra un mākoņpakalpojumi, ko veido Eiropas uzņēmumi — privacy-first, VDAR-natīvs un jūsu dati paliek šajā Atlantijas okeāna pusē.","cta_github":"⭐ Zvaigzne GitHub","cta_browse":"Pārlūkot kategorijas →","stat_members":"ES dalībvalstis","stat_tools":"Rīki atklāšanai","stat_gdpr":"Natīvā atbilstība","stat_oss":"Atklātā pirmkoda fokuss","categories_label":"Kas iekļauts","categories_title_1":"Atrast rīkus","categories_title_2":"katrā kategorijā","categories_lead":"No kodu redaktoriem līdz mākoņinfrastruktūrai, kurēts no izstrādātājiem izstrādātājiem.","why_label":"Kāpēc tas ir svarīgi","why_title_1":"Tavs stack,","why_title_2":"tava suverenitāte","why_lead":"Eiropas rīki nav tikai par atbilstību. Tas ir par to, kur dzīvo tavi dati un kam ir piekļuve tiem.","contribute_title":"Zini rīku, kas pieder šeit?","contribute_text":"Tas ir kopienas vadīts katalogs. Atveriet PR GitHub, lai pievienotu programmatūru, aparatūru vai pakalpojumus made in Europe.","contribute_btn":"Ieguldīt GitHub","footer_text":"Veidots ar ❤️ Eiropā","choose_language":"Izvēlēties valodu"},
+      "lt": {"nav_badge":"Jau greit","hero_eyebrow":"Kuruotas kūrėjų katalogas","hero_title_1":"Geriausi dev įrankiai","hero_title_2":"made in Europe","hero_subtitle":"Programinė įranga, SaaS, aparatinė įranga ir debesų paslaugos, sukurtos Europos įmonių — privacy-first, BDAR-natyvios ir jūsų duomenys lieka šioje Atlanto pusėje.","cta_github":"⭐ Žvaigždutė GitHub","cta_browse":"Naršyti kategorijas →","stat_members":"ES valstybės narės","stat_tools":"Įrankiai atradimui","stat_gdpr":"Natyvus atitikimas","stat_oss":"Atvirojo kodo fokusas","categories_label":"Kas įtraukta","categories_title_1":"Rasti įrankius","categories_title_2":"kiekvienoje kategorijoje","categories_lead":"Nuo kodo redaktorių iki debesų infrastruktūros, kuruota kūrėjų kūrėjams.","why_label":"Kodėl tai svarbu","why_title_1":"Jūsų stack,","why_title_2":"jūsų suverenitetas","why_lead":"Europos įrankiai yra ne tik apie atitikimą. Tai apie pasirinkimą, kur gyvena jūsų duomenys ir kas turi prieigą prie jų.","contribute_title":"Žinote įrankį, kuris priklauso čia?","contribute_text":"Tai yra bendruomenės valdomas katalogas. Atidarykite PR GitHub, kad pridėtumėte programinę įrangą, aparatinę įrangą ar paslaugas made in Europe.","contribute_btn":"Prisidėti GitHub","footer_text":"Sukurta su ❤️ Europoje","choose_language":"Pasirinkti kalbą"},
+      "ga": {"nav_badge":"Ag teacht go luath","hero_eyebrow":"Eolaire forbartha cuimsitheach","hero_title_1":"Na huirlisí dev is fearr","hero_title_2":"made in Europe","hero_subtitle":"Bogearraí, SaaS, crua-earraí agus seirbhísí scamaill arna dtógáil ag cuideachtaí Eorpacha — príobháideacht ar dtús, GDPR dúchais agus fanann do chuid sonraí ar an taobh seo den Atlantach.","cta_github":"⭐ Réalta ar GitHub","cta_browse":"Brabhsáil catagóirí →","stat_members":"Ballstáit AE","stat_tools":"Uirlisí le fionnadh","stat_gdpr":"Comhlíonadh dúchais","stat_oss":"Fócas foinse oscailte","categories_label":"Cad atá san áireamh","categories_title_1":"Aimsigh uirlisí","categories_title_2":"i ngach catagóir","categories_lead":"Ó eagarthóirí cóid go bonneagar scamaill, arna gcuimsiú ag forbróirí d'fhorbróirí.","why_label":"Cén fáth a bhfuil sé tábhachtach","why_title_1":"Do stack,","why_title_2":"do cheannasacht","why_lead":"Ní bhaineann uirlisí Eorpacha ach le comhlíonadh. Is é a bhaineann leo ná rogha a dhéanamh cá maireann do chuid sonraí agus cé a bhfuil rochtain acu orthu.","contribute_title":"Ar eol duit uirlis a bhaineann anseo?","contribute_text":"Is eolaire pobal-tiomáinte é seo. Oscail PR ar GitHub chun bogearraí, crua-earraí nó seirbhísí made in Europe a chur leis.","contribute_btn":"Cuir le GitHub","footer_text":"Déanta le ❤️ san Eoraip","choose_language":"Roghnaigh teanga"},
+      "mt": {"nav_badge":"Dalwaqt","hero_eyebrow":"Direttorju ta' żviluppaturi kuratorjali","hero_title_1":"L-aqwa għodod dev","hero_title_2":"made in Europe","hero_subtitle":"Software, SaaS, hardware u servizzi cloud mibnija minn kumpaniji Ewropej — privacy-first, GDPR nattiv u d-data tiegħek tibqa' fuq din il-naħa tal-Atlantiku.","cta_github":"⭐ Stella fuq GitHub","cta_browse":"Esplora kategoriji →","stat_members":"Stati Membri tal-UE","stat_tools":"Għodod biex tiskopri","stat_gdpr":"Konformità nattiva","stat_oss":"Fokus open source","categories_label":"X'hemm inkluż","categories_title_1":"Sib għodod","categories_title_2":"f'kull kategorija","categories_lead":"Minn editers tal-kodiċi sa infrastruttura cloud, kuratorjalment maħluqa minn żviluppaturi għal żviluppaturi.","why_label":"Għaliex dan huwa importanti","why_title_1":"L-istack tiegħek,","why_title_2":"is-sovranità tiegħek","why_lead":"L-għodod Ewropej mhux biss dwar konformità. Huma dwar l-għażla ta' fejn jgħixu d-data tiegħek u min għandu aċċess għalihom.","contribute_title":"Taf xi għodda li tappartjeni hawn?","contribute_text":"Dan huwa direttorju mmexxi mill-komunità. Iftaħ PR fuq GitHub biex iżżid software, hardware jew servizzi made in Europe.","contribute_btn":"Ikkontribwixxi fuq GitHub","footer_text":"Magħmul b'❤️ fl-Ewropa","choose_language":"Agħżel il-lingwa"}
+    };
+
+    const languages = [
+      { code: 'en', name: 'English', native: 'English', flags: '🇮🇪🇲🇹', countries: 'Ireland, Malta' },
+      { code: 'de', name: 'German', native: 'Deutsch', flags: '🇩🇪🇦🇹🇧🇪🇱🇺', countries: 'Germany, Austria, Belgium, Luxembourg' },
+      { code: 'fr', name: 'French', native: 'Français', flags: '🇫🇷🇧🇪🇱🇺', countries: 'France, Belgium, Luxembourg' },
+      { code: 'nl', name: 'Dutch', native: 'Nederlands', flags: '🇳🇱🇧🇪', countries: 'Netherlands, Belgium' },
+      { code: 'es', name: 'Spanish', native: 'Español', flags: '🇪🇸', countries: 'Spain' },
+      { code: 'it', name: 'Italian', native: 'Italiano', flags: '🇮🇹', countries: 'Italy' },
+      { code: 'pt', name: 'Portuguese', native: 'Português', flags: '🇵🇹', countries: 'Portugal' },
+      { code: 'pl', name: 'Polish', native: 'Polski', flags: '🇵🇱', countries: 'Poland' },
+      { code: 'sv', name: 'Swedish', native: 'Svenska', flags: '🇸🇪🇫🇮', countries: 'Sweden, Finland' },
+      { code: 'da', name: 'Danish', native: 'Dansk', flags: '🇩🇰', countries: 'Denmark' },
+      { code: 'fi', name: 'Finnish', native: 'Suomi', flags: '🇫🇮', countries: 'Finland' },
+      { code: 'cs', name: 'Czech', native: 'Čeština', flags: '🇨🇿', countries: 'Czech Republic' },
+      { code: 'ro', name: 'Romanian', native: 'Română', flags: '🇷🇴', countries: 'Romania' },
+      { code: 'hu', name: 'Hungarian', native: 'Magyar', flags: '🇭🇺', countries: 'Hungary' },
+      { code: 'sk', name: 'Slovak', native: 'Slovenčina', flags: '🇸🇰', countries: 'Slovakia' },
+      { code: 'el', name: 'Greek', native: 'Ελληνικά', flags: '🇬🇷🇨🇾', countries: 'Greece, Cyprus' },
+      { code: 'bg', name: 'Bulgarian', native: 'Български', flags: '🇧🇬', countries: 'Bulgaria' },
+      { code: 'hr', name: 'Croatian', native: 'Hrvatski', flags: '🇭🇷', countries: 'Croatia' },
+      { code: 'sl', name: 'Slovenian', native: 'Slovenščina', flags: '🇸🇮', countries: 'Slovenia' },
+      { code: 'et', name: 'Estonian', native: 'Eesti', flags: '🇪🇪', countries: 'Estonia' },
+      { code: 'lv', name: 'Latvian', native: 'Latviešu', flags: '🇱🇻', countries: 'Latvia' },
+      { code: 'lt', name: 'Lithuanian', native: 'Lietuvių', flags: '🇱🇹', countries: 'Lithuania' },
+      { code: 'ga', name: 'Irish', native: 'Gaeilge', flags: '🇮🇪', countries: 'Ireland' },
+      { code: 'mt', name: 'Maltese', native: 'Malti', flags: '🇲🇹', countries: 'Malta' },
+    ];
+
+    let currentLang = 'en';
+
     // Draw 12 EU stars in a circle around the emblem
     const ring = document.getElementById('starsRing');
     if (ring) {
@@ -813,6 +1074,95 @@
         ring.appendChild(star);
       }
     }
+
+    const modalStars = document.getElementById('langModalStars');
+    if (modalStars) {
+      for (let i = 0; i < 12; i++) {
+        const star = document.createElement('span');
+        star.textContent = '★';
+        star.style.setProperty('--angle', `${i * 30}deg`);
+        modalStars.appendChild(star);
+      }
+    }
+
+    function detectLang() {
+      const browserLang = (navigator.language || '').slice(0, 2).toLowerCase();
+      return languages.some((language) => language.code === browserLang) ? browserLang : null;
+    }
+
+    function switchLang(code) {
+      if (!langData[code]) return;
+
+      currentLang = code;
+      document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const key = element.dataset.i18n;
+        if (langData[code][key]) {
+          element.textContent = langData[code][key];
+        }
+      });
+
+      document.documentElement.lang = code;
+      const langToggle = document.getElementById('langToggle');
+      if (langToggle) {
+        langToggle.textContent = `🌐 ${code.toUpperCase()}`;
+      }
+
+      localStorage.setItem('lang', code);
+      document.querySelectorAll('.lang-card').forEach((card) => {
+        card.classList.toggle('active', card.dataset.lang === code);
+      });
+    }
+
+    function buildLangGrid() {
+      const grid = document.getElementById('langGrid');
+      if (!grid) return;
+
+      languages.forEach((language, index) => {
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'lang-card';
+        card.dataset.lang = language.code;
+        card.style.animationDelay = `${index * 24}ms`;
+        card.innerHTML = `
+          <span class="flag">${language.flags}</span>
+          <span class="native-name">${language.native}</span>
+          <span class="countries">${language.countries}</span>
+          <span class="code-badge">${language.code.toUpperCase()}</span>
+        `;
+        card.addEventListener('click', () => {
+          switchLang(language.code);
+          closeModal();
+        });
+        grid.appendChild(card);
+      });
+    }
+
+    function openModal() {
+      const modal = document.getElementById('langModal');
+      if (!modal) return;
+      modal.classList.add('open');
+      document.body.classList.add('lang-modal-open');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('langModal');
+      if (!modal) return;
+      modal.classList.remove('open');
+      document.body.classList.remove('lang-modal-open');
+    }
+
+    buildLangGrid();
+    switchLang(localStorage.getItem('lang') || detectLang() || 'en');
+
+    document.getElementById('langToggle')?.addEventListener('click', openModal);
+    document.getElementById('langModalClose')?.addEventListener('click', closeModal);
+    document.querySelector('.lang-modal-backdrop')?.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
   </script>
 
 </body>
