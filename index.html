@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Made in Europe — Dev Tools & Hardware Directory</title>
+  <meta name="description" content="A curated directory of software and hardware tools for developers, built and maintained in Europe." />
+  <meta property="og:title" content="Made in Europe — Dev Tools & Hardware Directory" />
+  <meta property="og:description" content="Discover developer tools, cloud services, and hardware made in Europe." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://madeineurope.dev" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇪🇺</text></svg>" />
+  <style>
+    :root {
+      --eu-blue: #003399;
+      --eu-gold: #FFCC00;
+      --bg: #0a0e1a;
+      --surface: #111827;
+      --surface-2: #1a2235;
+      --border: #1e2d4a;
+      --text: #e8edf5;
+      --text-muted: #8898b0;
+      --accent: #4e8cff;
+      --accent-2: #00d4aa;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── Stars background ─────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, rgba(255,204,0,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 80% 10%, rgba(255,204,0,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 50% 80%, rgba(255,204,0,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 10% 60%, rgba(255,204,0,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 50%, rgba(255,204,0,0.2) 0%, transparent 100%),
+        radial-gradient(1px 1px at 35% 15%, rgba(255,204,0,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 70%, rgba(255,204,0,0.3) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Layout ───────────────────────────────────────────── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Nav ──────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(10, 14, 26, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .logo-stars {
+      display: flex;
+      gap: 3px;
+    }
+
+    .logo-star {
+      color: var(--eu-gold);
+      font-size: 0.7rem;
+    }
+
+    .nav-badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      background: rgba(78, 140, 255, 0.15);
+      border: 1px solid rgba(78, 140, 255, 0.3);
+      border-radius: 99px;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    .hero {
+      padding: 160px 0 100px;
+      text-align: center;
+    }
+
+    .eu-emblem {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      background: var(--eu-blue);
+      border-radius: 50%;
+      margin-bottom: 32px;
+      font-size: 2rem;
+      box-shadow: 0 0 40px rgba(0, 51, 153, 0.5), 0 0 80px rgba(0, 51, 153, 0.2);
+      position: relative;
+    }
+
+    /* EU circle of stars */
+    .eu-emblem::after {
+      content: '★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★';
+      display: none;
+    }
+
+    .stars-ring {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    .star-point {
+      position: absolute;
+      color: var(--eu-gold);
+      font-size: 0.75rem;
+      width: 14px;
+      height: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-origin: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--eu-gold), #ff9500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--eu-blue);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(0, 51, 153, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: #0044cc;
+      box-shadow: 0 4px 28px rgba(0, 51, 153, 0.6);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ── Stats bar ────────────────────────────────────────── */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--eu-gold);
+      font-family: var(--mono);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
+
+    /* ── Why section ──────────────────────────────────────── */
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      margin-bottom: 12px;
+    }
+
+    .section h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .section h2 .dim { color: var(--text-muted); }
+
+    .section p.lead {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── Category grid ────────────────────────────────────── */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .category-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      transition: all 0.25s;
+      cursor: default;
+    }
+
+    .category-card:hover {
+      border-color: rgba(78, 140, 255, 0.4);
+      background: var(--surface-2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .category-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .category-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .category-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .category-examples {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      font-family: var(--mono);
+      padding: 2px 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+
+    /* ── Why Europe ───────────────────────────────────────── */
+    .reasons {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .reason {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .reason-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(78, 140, 255, 0.1);
+      border: 1px solid rgba(78, 140, 255, 0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .reason h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .reason p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── Contribute ───────────────────────────────────────── */
+    .contribute {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contribute::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--eu-blue), var(--eu-gold), var(--eu-blue));
+    }
+
+    .contribute h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .contribute p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin: 0 auto 32px;
+    }
+
+    .contribute-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .github-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      background: #fff;
+      color: #0a0e1a;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .github-btn:hover {
+      background: #f0f4ff;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+    }
+
+    .github-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ── Footer ───────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--text); }
+
+    .footer-stars {
+      font-size: 0.6rem;
+      color: var(--eu-gold);
+      letter-spacing: 4px;
+      display: block;
+      margin-top: 12px;
+    }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .hero { padding: 120px 0 60px; }
+      .contribute { padding: 32px 24px; }
+      .stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="inner">
+      <a href="/" class="logo">
+        <span>🇪🇺</span>
+        <span>madeineurope.dev</span>
+      </a>
+      <span class="nav-badge">Coming Soon</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="eu-emblem" aria-hidden="true">
+        <span style="position:relative;z-index:1;font-size:2.2rem;">⌨️</span>
+        <!-- 12 EU stars around the circle -->
+        <div class="stars-ring" id="starsRing"></div>
+      </div>
+
+      <p class="hero-eyebrow">A curated developer directory</p>
+
+      <h1>
+        The best dev tools<br />
+        <span class="highlight">made in Europe</span>
+      </h1>
+
+      <p>
+        Software, SaaS, hardware, and cloud services built by
+        European companies — privacy-first, GDPR-native, and
+        keeping your data on this side of the Atlantic.
+      </p>
+
+      <div class="hero-cta">
+        <a href="https://github.com/klausclaw18/madeineurope.dev" class="btn btn-primary" target="_blank" rel="noopener">
+          ⭐ Star on GitHub
+        </a>
+        <a href="#categories" class="btn btn-outline">
+          Browse categories →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="container">
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-number">27</div>
+        <div class="stat-label">EU Member States</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Tools to discover</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">GDPR</div>
+        <div class="stat-label">Native compliance</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">OSS</div>
+        <div class="stat-label">Open source focus</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">What's included</p>
+        <h2>Find tools <span class="dim">across every category</span></h2>
+        <p class="lead">
+          From code editors to cloud infrastructure, curated by developers for developers.
+        </p>
+      </div>
+
+      <div class="categories">
+        <div class="category-card">
+          <span class="category-icon">🖥️</span>
+          <h3>Developer Tools</h3>
+          <p>IDEs, CLIs, debuggers, profilers, and productivity tools built by European teams.</p>
+          <div class="category-examples">
+            <span class="tag">IDE</span>
+            <span class="tag">CLI</span>
+            <span class="tag">Debugger</span>
+            <span class="tag">Linter</span>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <span class="category-icon">☁️</span>
+          <h3>Cloud & Hosting</h3>
+          <p>European cloud providers, VPS, managed databases, and serverless platforms.</p>
+          <div class="category-examples">
+            <span class="tag">Hetzner</span>
+            <span class="tag">OVHcloud</span>
+            <span class="tag">Scaleway</span>
+            <span class="tag">IONOS</span>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <span class="category-icon">🔒</span>
+          <h3>Security & Auth</h3>
+          <p>Authentication, secrets management, VPNs, and security tooling made in Europe.</p>
+          <div class="category-examples">
+            <span class="tag">SSO</span>
+            <span class="tag">Secrets</span>
+            <span class="tag">VPN</span>
+            <span class="tag">WAF</span>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <span class="category-icon">📊</span>
+          <h3>Analytics & Monitoring</h3>
+          <p>Privacy-first analytics, APM, logging, and observability stacks.</p>
+          <div class="category-examples">
+            <span class="tag">Matomo</span>
+            <span class="tag">Plausible</span>
+            <span class="tag">Grafana</span>
+            <span class="tag">APM</span>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <span class="category-icon">🛠️</span>
+          <h3>Hardware & IoT</h3>
+          <p>Keyboards, microcontrollers, SBCs, and maker hardware from European manufacturers.</p>
+          <div class="category-examples">
+            <span class="tag">Keyboards</span>
+            <span class="tag">MCU</span>
+            <span class="tag">SBC</span>
+            <span class="tag">IoT</span>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <span class="category-icon">🗄️</span>
+          <h3>Databases & Storage</h3>
+          <p>Managed databases, object storage, and data infrastructure hosted in Europe.</p>
+          <div class="category-examples">
+            <span class="tag">Postgres</span>
+            <span class="tag">Redis</span>
+            <span class="tag">S3-compat</span>
+            <span class="tag">CDN</span>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <span class="category-icon">📬</span>
+          <h3>Communication & Email</h3>
+          <p>Email providers, transactional mail, messaging, and notification services.</p>
+          <div class="category-examples">
+            <span class="tag">SMTP</span>
+            <span class="tag">Webhooks</span>
+            <span class="tag">Chat</span>
+            <span class="tag">Push</span>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <span class="category-icon">🤖</span>
+          <h3>AI & ML</h3>
+          <p>European AI APIs, model providers, and ML infrastructure respecting data sovereignty.</p>
+          <div class="category-examples">
+            <span class="tag">LLM</span>
+            <span class="tag">Inference</span>
+            <span class="tag">Vector DB</span>
+            <span class="tag">OCR</span>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <span class="category-icon">💳</span>
+          <h3>Payments & Billing</h3>
+          <p>Payment processors, subscription billing, and invoicing built for European markets.</p>
+          <div class="category-examples">
+            <span class="tag">SEPA</span>
+            <span class="tag">iDEAL</span>
+            <span class="tag">SCA</span>
+            <span class="tag">PSD2</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY EUROPE -->
+  <section class="section" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Why it matters</p>
+        <h2>Your stack, <span class="dim">your sovereignty</span></h2>
+        <p class="lead">
+          European tools aren't just about compliance. They're about choosing
+          where your data lives and who has access to it.
+        </p>
+      </div>
+
+      <div class="reasons">
+        <div class="reason">
+          <div class="reason-icon">🛡️</div>
+          <div>
+            <h4>GDPR by default</h4>
+            <p>European companies are built with data protection baked in, not bolted on.</p>
+          </div>
+        </div>
+
+        <div class="reason">
+          <div class="reason-icon">📍</div>
+          <div>
+            <h4>Data stays in Europe</h4>
+            <p>No transatlantic data transfers, no Schrems II headaches, no legal uncertainty.</p>
+          </div>
+        </div>
+
+        <div class="reason">
+          <div class="reason-icon">🌱</div>
+          <div>
+            <h4>Support local ecosystems</h4>
+            <p>European tech companies need visibility. Your stack choice is a vote.</p>
+          </div>
+        </div>
+
+        <div class="reason">
+          <div class="reason-icon">⚡</div>
+          <div>
+            <h4>Lower latency for EU users</h4>
+            <p>Servers in Frankfurt, Amsterdam, Paris, or Stockholm mean faster products.</p>
+          </div>
+        </div>
+
+        <div class="reason">
+          <div class="reason-icon">🔍</div>
+          <div>
+            <h4>Open source culture</h4>
+            <p>A huge share of major OSS comes from Europe. This directory celebrates that.</p>
+          </div>
+        </div>
+
+        <div class="reason">
+          <div class="reason-icon">🏛️</div>
+          <div>
+            <h4>Regulatory alignment</h4>
+            <p>GDPR, NIS2, AI Act — European tools are built knowing these rules exist.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTRIBUTE -->
+  <section class="section">
+    <div class="container">
+      <div class="contribute">
+        <h2>Know a tool that belongs here?</h2>
+        <p>
+          This is a community-driven directory. Open a PR on GitHub
+          to add software, hardware, or services made in Europe.
+        </p>
+        <div class="contribute-actions">
+          <a href="https://github.com/klausclaw18/madeineurope.dev" class="github-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            Contribute on GitHub
+          </a>
+          <a href="#categories" class="btn btn-outline">
+            Browse the directory →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>
+        Made with ❤️ in <strong>Europe</strong> &nbsp;·&nbsp;
+        <a href="https://github.com/klausclaw18/madeineurope.dev" target="_blank" rel="noopener">GitHub</a>
+      </p>
+      <span class="footer-stars">★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★</span>
+    </div>
+  </footer>
+
+  <script>
+    // Draw 12 EU stars in a circle around the emblem
+    const ring = document.getElementById('starsRing');
+    if (ring) {
+      for (let i = 0; i < 12; i++) {
+        const angle = (i * 30 - 90) * (Math.PI / 180);
+        const r = 38;
+        const x = 50 + r * Math.cos(angle);
+        const y = 50 + r * Math.sin(angle);
+        const star = document.createElement('div');
+        star.className = 'star-point';
+        star.style.left = `calc(${x}% - 7px)`;
+        star.style.top = `calc(${y}% - 7px)`;
+        star.textContent = '★';
+        star.style.color = '#FFCC00';
+        star.style.fontSize = '0.65rem';
+        ring.appendChild(star);
+      }
+    }
+  </script>
+
+</body>
+</html>
