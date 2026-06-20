@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{PAGE_TITLE}}</title>
+  <meta name="description" content="{{PAGE_DESC}}" />
+  <meta property="og:title" content="{{PAGE_TITLE}}" />
+  <meta property="og:description" content="{{PAGE_DESC}}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://madeineurope.dev{{PATH}}" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇪🇺</text></svg>" />
+  <link rel="canonical" href="https://madeineurope.dev{{PATH}}" />
+  <style>{{STYLES}}</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="inner">
+      <a href="/" class="logo">
+        <span>🇪🇺</span>
+        <span>madeineurope.dev</span>
+      </a>
+      <div class="nav-actions">
+        <a href="/all.html" class="btn btn-outline" style="padding:6px 14px;font-size:0.82rem;" data-i18n="dir_all_tools">All tools</a>
+        <button class="lang-toggle" id="langToggle" type="button" aria-haspopup="dialog" aria-controls="langModal">🌐 EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CATEGORY HERO -->
+  <section class="cat-hero">
+    <div class="container">
+      <a href="/" class="back-link" data-i18n="dir_back">← Back to directory</a>
+      <div class="cat-hero-text">
+        <span class="cat-icon">{{CATEGORY_ICON}}</span>
+        <h1>{{CATEGORY_NAME}}</h1>
+        <p class="cat-desc">{{CATEGORY_DESC}}</p>
+        <div class="cat-usecases">{{CATEGORY_USECASES}}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIRECTORY TOOLBAR -->
+  <div class="dir-toolbar">
+    <div class="container">
+      <div class="dir-toolbar-inner">
+        <div class="dir-search">
+          <input id="dirSearch" type="search" autocomplete="off"
+                 placeholder="Search tools, tags, use cases…" data-i18n-placeholder="dir_search_placeholder" />
+        </div>
+        <div class="dir-filters">
+          <div class="dir-select"><select id="fCountry" aria-label="Country"></select></div>
+          <div class="dir-select"><select id="fLicense" aria-label="License"></select></div>
+          <div class="dir-select"><select id="fDeployment" aria-label="Deployment"></select></div>
+          <div class="dir-select"><select id="fPricing" aria-label="Pricing"></select></div>
+          <div class="dir-select"><select id="fSource" aria-label="Source"></select></div>
+          <div class="dir-select"><select id="fSort" aria-label="Sort">
+            <option value="name" data-i18n="dir_sort_name">Name (A–Z)</option>
+            <option value="stars" data-i18n="dir_sort_stars">GitHub stars</option>
+            <option value="recent" data-i18n="dir_sort_recent">Recently pushed</option>
+          </select></div>
+          <button class="dir-clear" id="dirClear" type="button" data-i18n="dir_clear">Clear filters</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIRECTORY -->
+  <main class="container">
+    <div class="dir-meta">
+      <span id="dirCount" class="dir-count"></span>
+      <div id="dirActiveFilters" class="dir-active-filters"></div>
+    </div>
+    <section id="directory" data-category-id="{{CATEGORY_ID}}" data-bundle-url="/assets/directory.json">
+      <div id="toolsGrid" class="tools-grid"></div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>
+        <span data-i18n="footer_text">Made with ❤️ in Europe</span> &nbsp;·&nbsp;
+        <a href="https://github.com/klausclaw18/madeineurope.dev" target="_blank" rel="noopener">GitHub</a> &nbsp;·&nbsp;
+        <span>© {{YEAR}}</span>
+      </p>
+      <span class="footer-stars">★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★</span>
+    </div>
+  </footer>
+
+  <!-- LANGUAGE MODAL -->
+  <div id="langModal" class="lang-modal" role="dialog" aria-modal="true" aria-label="Language chooser">
+    <div class="lang-modal-backdrop"></div>
+    <div class="lang-modal-content">
+      <button class="lang-modal-close" id="langModalClose" aria-label="Close">×</button>
+      <div class="lang-modal-stars" id="langModalStars" aria-hidden="true"></div>
+      <h2 class="lang-modal-title" data-i18n="choose_language">Choose your language</h2>
+      <div class="lang-grid" id="langGrid"></div>
+    </div>
+  </div>
+
+  <!-- i18n JSON island -->
+  <script type="application/json" id="i18n-data">{{I18N_JSON}}</script>
+  <!-- Client -->
+  <script type="module">{{CLIENT_JS}}</script>
+
+</body>
+</html>

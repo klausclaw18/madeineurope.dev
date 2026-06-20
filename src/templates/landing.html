@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="{{LANG}}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{PAGE_TITLE}}</title>
+  <meta name="description" content="{{PAGE_DESC}}" />
+  <meta property="og:title" content="{{PAGE_TITLE}}" />
+  <meta property="og:description" content="{{PAGE_DESC}}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://madeineurope.dev" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇪🇺</text></svg>" />
+  <style>{{STYLES}}</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="inner">
+      <a href="/" class="logo">
+        <span>🇪🇺</span>
+        <span>madeineurope.dev</span>
+      </a>
+      <div class="nav-actions">
+        <a href="/all.html" class="btn btn-outline" style="padding:6px 14px;font-size:0.82rem;" data-i18n="dir_all_tools">All tools</a>
+        <button class="lang-toggle" id="langToggle" type="button" aria-haspopup="dialog" aria-controls="langModal">🌐 EN</button>
+        <span class="nav-badge" data-i18n="nav_badge">Coming Soon</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="eu-emblem" aria-hidden="true">
+        <span style="position:relative;z-index:1;font-size:2.2rem;">⌨️</span>
+        <div class="stars-ring" id="starsRing"></div>
+      </div>
+
+      <p class="hero-eyebrow" data-i18n="hero_eyebrow">A curated developer directory</p>
+
+      <h1>
+        <span data-i18n="hero_title_1">The best dev tools</span><br />
+        <span class="highlight" data-i18n="hero_title_2">made in Europe</span>
+      </h1>
+
+      <p data-i18n="hero_subtitle">
+        Software, SaaS, hardware, and cloud services built by
+        European companies — privacy-first, GDPR-native, and
+        keeping your data on this side of the Atlantic.
+      </p>
+
+      <div class="hero-cta">
+        <a href="https://github.com/klausclaw18/madeineurope.dev" class="btn btn-primary" target="_blank" rel="noopener">
+          <span data-i18n="cta_github">⭐ Star on GitHub</span>
+        </a>
+        <a href="#categories" class="btn btn-outline">
+          <span data-i18n="cta_browse">Browse categories →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="container">
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-number">{{STATS_CATEGORIES}}</div>
+        <div class="stat-label" data-i18n="dir_categories">Categories</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">{{STATS_TOOLS}}</div>
+        <div class="stat-label" data-i18n="stat_tools">Tools to discover</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">GDPR</div>
+        <div class="stat-label" data-i18n="stat_gdpr">Native compliance</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">OSS</div>
+        <div class="stat-label" data-i18n="stat_oss">Open source focus</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label" data-i18n="categories_label">What's included</p>
+        <h2><span data-i18n="categories_title_1">Find tools</span> <span class="dim" data-i18n="categories_title_2">across every category</span></h2>
+        <p class="lead" data-i18n="categories_lead">
+          From code editors to cloud infrastructure, curated by developers for developers.
+        </p>
+      </div>
+
+      <div class="dir-jumpbar">{{JUMPBAR}}</div>
+
+      <div class="categories">
+        {{CATEGORIES_GRID}}
+      </div>
+    </div>
+  </section>
+
+  <!-- TOP PROJECTS -->
+  <section class="section" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label" data-i18n="dir_top_projects">Top European projects</p>
+        <h2><span data-i18n="why_title_1">Your stack,</span> <span class="dim" data-i18n="why_title_2">your sovereignty</span></h2>
+        <p class="lead" data-i18n="why_lead">
+          European tools aren't just about compliance. They're about choosing
+          where your data lives and who has access to it.
+        </p>
+      </div>
+      <div class="top-projects">{{TOP_PROJECTS}}</div>
+    </div>
+  </section>
+
+  <!-- WHY EUROPE -->
+  <section class="section">
+    <div class="container">
+      <div class="reasons">
+        <div class="reason">
+          <div class="reason-icon">🛡️</div>
+          <div>
+            <h4>GDPR by default</h4>
+            <p>European companies are built with data protection baked in, not bolted on.</p>
+          </div>
+        </div>
+        <div class="reason">
+          <div class="reason-icon">📍</div>
+          <div>
+            <h4>Data stays in Europe</h4>
+            <p>No transatlantic data transfers, no Schrems II headaches, no legal uncertainty.</p>
+          </div>
+        </div>
+        <div class="reason">
+          <div class="reason-icon">🌱</div>
+          <div>
+            <h4>Support local ecosystems</h4>
+            <p>European tech companies need visibility. Your stack choice is a vote.</p>
+          </div>
+        </div>
+        <div class="reason">
+          <div class="reason-icon">⚡</div>
+          <div>
+            <h4>Lower latency for EU users</h4>
+            <p>Servers in Frankfurt, Amsterdam, Paris, or Stockholm mean faster products.</p>
+          </div>
+        </div>
+        <div class="reason">
+          <div class="reason-icon">🔍</div>
+          <div>
+            <h4>Open source culture</h4>
+            <p>A huge share of major OSS comes from Europe. This directory celebrates that.</p>
+          </div>
+        </div>
+        <div class="reason">
+          <div class="reason-icon">🏛️</div>
+          <div>
+            <h4>Regulatory alignment</h4>
+            <p>GDPR, NIS2, AI Act — European tools are built knowing these rules exist.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTRIBUTE -->
+  <section class="section">
+    <div class="container">
+      <div class="contribute">
+        <h2 data-i18n="contribute_title">Know a tool that belongs here?</h2>
+        <p data-i18n="contribute_text">
+          This is a community-driven directory. Open a PR on GitHub
+          to add software, hardware, or services made in Europe.
+        </p>
+        <div class="contribute-actions">
+          <a href="https://github.com/klausclaw18/madeineurope.dev" class="github-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            <span data-i18n="contribute_btn">Contribute on GitHub</span>
+          </a>
+          <a href="/all.html" class="btn btn-outline">
+            <span data-i18n="cta_browse">Browse the directory →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>
+        <span data-i18n="footer_text">Made with ❤️ in Europe</span> &nbsp;·&nbsp;
+        <a href="https://github.com/klausclaw18/madeineurope.dev" target="_blank" rel="noopener">GitHub</a> &nbsp;·&nbsp;
+        <span>© {{YEAR}}</span>
+      </p>
+      <span class="footer-stars">★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★</span>
+    </div>
+  </footer>
+
+  <!-- LANGUAGE MODAL -->
+  <div id="langModal" class="lang-modal" role="dialog" aria-modal="true" aria-label="Language chooser">
+    <div class="lang-modal-backdrop"></div>
+    <div class="lang-modal-content">
+      <button class="lang-modal-close" id="langModalClose" aria-label="Close">×</button>
+      <div class="lang-modal-stars" id="langModalStars" aria-hidden="true"></div>
+      <h2 class="lang-modal-title" data-i18n="choose_language">Choose your language</h2>
+      <div class="lang-grid" id="langGrid"></div>
+    </div>
+  </div>
+
+  <!-- i18n JSON island -->
+  <script type="application/json" id="i18n-data">{{I18N_JSON}}</script>
+  <!-- Client -->
+  <script type="module">{{CLIENT_JS}}</script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+# Build output
+dist/
+# Keep data/ committed — it is the source of truth
+# Keep src/ committed — templates, styles, client JS
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Local env
+.env
+.env.local
+.env.*.local
